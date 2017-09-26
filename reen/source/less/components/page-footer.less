@@ -1,0 +1,276 @@
+.page-footer {
+  .clearfix();
+
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 40px;
+
+  color: @white;
+
+  background-color: #2f4052;
+
+  @media @desktop {
+    margin: 0;
+    padding: 0;
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+
+  &__inner {
+    @media @desktop {
+      width: 1180px;
+      padding-right: 10px;
+      padding-left: 10px;
+      margin: 0 auto;
+    }
+  }
+
+  .footer-heading-font() {
+    font-family: @font-Lato;
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: @white;
+  }
+
+  .footer-desc-font() {
+    font-family: @font-Source-Sans;
+    font-size: 14px;
+    line-height: 22px;
+    color: #a3b1bf;
+  }
+
+  &__who {
+    margin-bottom: 40px;
+
+    @media @tablet {
+      float: left;
+      margin-bottom: 0;
+      margin-right: 3%;
+      width: 22.75%;
+    }
+  }
+
+  &__who-heading {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+
+    .footer-heading-font();
+  }
+
+  &__who-desc {
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+
+    .footer-desc-font();
+  }
+
+  &__who-more {
+    position: relative;
+
+    padding-right: 30px;
+
+    font-family: @font-Source-Sans;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 22px;
+    text-decoration: none;
+    color: #a3b1bf;
+  }
+
+  &__who-more:hover {
+    color: @green;
+  }
+
+  &__who-more::after {
+    content: '';
+
+    position: absolute;
+    top: 4px;
+    right: 5px;
+
+    display: block;
+
+    width: 12px;
+    height: 12px;
+
+    background-image: url('../img/arrow.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__who-more:hover::after {
+    right: 0;
+
+    background-image: url('../img/arrow-green.svg');
+  }
+
+  &__works {
+    @media @tablet {
+      float: left;
+      margin-right: 3%;
+      width: 22.75%;
+    }
+  }
+
+  &__works-heading {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+
+    .footer-heading-font();
+  }
+
+  &__works-images {
+    .clearfix();
+    margin-bottom: 40px;
+  }
+
+  &__works-img-wrap {
+    float: left;
+    margin: 0;
+    padding: 0;
+
+    width: 49%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+  }
+
+  &__works-img-wrap:nth-child(2n) {
+    margin-right: 0; 
+  }
+
+  &__works-img {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__contacts {
+    @media @tablet {
+      float: left;
+      margin-bottom: 0;
+      margin-right: 3%;
+      width: 21.75%;
+    }
+  }
+
+  &__contacts-heading {
+    margin: 0;
+    padding: 0;
+
+    .footer-heading-font();
+  }
+
+  &__contacts-desc {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+
+    .footer-desc-font();
+  }
+
+  .contacts-common() {
+    .footer-desc-font();
+
+    position: relative;
+    display: block;
+    padding-left: 20px;
+
+    @media @desktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__contacts-address {
+    .contacts-common();
+  }
+
+  &__contacts-address-icon {
+    position: absolute;
+    left: 3px;
+    top: 5px;
+
+    height: 12px;
+  }
+
+  &__contacts-phone {
+    .contacts-common();
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+    text-decoration: none;
+
+    border: 1px solid #a3b1bf;
+    border-radius: 5px; 
+
+    @media @desktop {
+      border: 0;
+    }
+  }
+
+  &__contacts-phone:hover {
+    color: @green;
+  }
+
+  &__contacts-phone-icon {
+    position: absolute;
+    left: 4px;
+    top: 50%;
+
+    margin: 0;
+    margin-top: -6px;
+    padding: 0;
+    height: 13px;
+  }
+
+  &__contacts-mail {
+    .contacts-common();
+    margin-bottom: 40px;
+  }
+
+  &__contacts-mail:hover {
+    color: @green;
+  }
+
+  &__contacts-mail-icon {
+    position: absolute;
+    left: 3px;
+    top: 8px;
+
+    height: 9px;
+  }
+
+  &__subscribe {
+    @media @tablet {
+      float: left;
+      margin-right: 0;
+      width: 22.75%;
+    }
+  }
+
+  &__subscribe-heading {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+
+    .footer-heading-font();
+  }
+
+  &__subscribe-desc {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+
+    .footer-desc-font();
+  }
+}

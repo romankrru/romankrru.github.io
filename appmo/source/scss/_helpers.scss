@@ -1,0 +1,5 @@
+@mixin container() {
+  width: $container-width;
+  padding: $container-padding;
+  margin: 0 auto;
+}

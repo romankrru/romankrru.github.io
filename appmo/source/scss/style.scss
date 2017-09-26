@@ -1,0 +1,31 @@
+@import 'variables.scss';
+@import 'helpers.scss';
+@import 'normalize.scss';
+@import 'animate.scss';
+@import 'swiper.scss';
+
+@import '_icons.fallback.scss';
+@import '_icons.png.scss';
+@import '_icons.svg.scss';
+
+@import './components/_main-header.scss';
+@import './components/_main-nav.scss';
+@import './components/_main-logo.scss';
+@import './components/_promo.scss';
+@import './components/_btn.scss';
+@import './components/_features.scss';
+@import './components/_newsletter.scss';
+@import './components/_slider.scss';
+@import './components/_news.scss';
+@import './components/_screenshots.scss';
+@import './components/_member.scss';
+@import './components/_team.scss';
+@import './components/_clients.scss';
+@import './components/_map.scss';
+@import './components/_feedback.scss';
+
+// font-family: 'Exo', sans-serif;
+
+.wow {
+  visibility: hidden;
+}

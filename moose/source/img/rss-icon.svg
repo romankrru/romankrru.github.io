@@ -1,0 +1,11 @@
+<svg id="Icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4d4d4d;
+      }
+    </style>
+  </defs>
+  <title>rss-icon</title>
+  <path id="RSS" class="cls-1" d="M1399.41,905.15a1.32,1.32,0,0,1,0,1.87h0a1.32,1.32,0,1,1-1.88-1.87h0a1.33,1.33,0,0,1,1.88,0Zm0,0h0Zm-1.88,1.87h0Zm-.39-6.2v1.91a4.69,4.69,0,0,1,4.68,4.69h1.92a6.61,6.61,0,0,0-6.6-6.6Zm0-3.4v1.91a8.1,8.1,0,0,1,8.08,8.09h1.91a10,10,0,0,0-10-10Z" transform="translate(-1397.14 -897.42)"/>
+</svg>

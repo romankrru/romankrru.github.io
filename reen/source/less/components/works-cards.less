@@ -1,0 +1,55 @@
+.works-cards {
+  .clearfix();
+
+  &__item {
+    margin-bottom: 20px;
+
+    @media @tablet {
+      margin-bottom: 80px;
+      float: left;
+      width: 48.73%;
+      margin-right: 2.54%;
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__img {
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    max-width: 100%; 
+    height: auto;
+  }
+
+  &__desc {
+    padding: 20px 5px;
+    text-align: center;
+
+    background-color: @white;
+  }
+
+  &__desc-heading {
+    margin: 0;
+    padding: 0;
+
+    font-family: @font-Lato;
+    font-weight: bold;
+    color: @blue;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  &__desc-text {
+    margin: 0;
+    padding: 0;
+
+    font-family: @font-Source-Sans;
+    font-size: 14px;
+    line-height: 22px;
+    color: @light-blue;
+  }
+}

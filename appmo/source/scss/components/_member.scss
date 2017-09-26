@@ -1,0 +1,115 @@
+.member {
+  position: relative;
+
+  min-width: 1180px;
+  padding-top: 100px;
+  padding-bottom: 240px;
+
+  background-color: #de5749;
+
+  &__inner {
+    @include container();
+  }
+
+  &__heading {
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 0;
+
+    font-size: 50px;
+    color: #fff;
+    font-family: 'Exo';
+    font-weight: 200;
+    text-align: center;
+  }
+
+  &__desc {
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 140px;
+    padding: 0;
+
+    font-size: 17px;
+    line-height: 33px;
+    color: #fff;
+    font-family: 'Exo';
+    font-weight: 200;
+    text-align: center;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  &__item {
+    display: block;
+    margin: 1%;
+
+    width: calc(25% - 2%);
+    padding-top: 55px;
+    padding-bottom: 30px;
+
+    text-decoration: none;
+
+    background-color: #fff;
+
+    transition: all .2s ease;
+  }
+
+  &__item:hover {
+    transform: scale(1.1);
+  }
+
+  &__price {
+    padding: 10px;
+    margin-bottom: 40px;
+
+    font-family: 'Exo';
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    color: #de5749;
+  }
+
+  &__options {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__options li {
+    padding: 10px;
+
+    font-family: 'Exo';
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: #de5749;
+
+    border-bottom: 1px solid #eee;
+  }
+
+  &__options li:last-child {
+    border: none;
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 97px;
+    
+    background-image: url('../img/member-after-bg.jpg');
+    background-position: center top;
+    background-size: 100% 100%;
+  }
+}

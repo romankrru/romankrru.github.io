@@ -1,0 +1,72 @@
+@mixin icon-bg-date($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('..\source\img\svg-icons\png\bg-date.png');
+    background-repeat: no-repeat;
+}
+@mixin icon-border-subscribe($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('..\source\img\svg-icons\png\border-subscribe.png');
+    background-repeat: no-repeat;
+}
+@mixin icon-border($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('..\source\img\svg-icons\png\border.png');
+    background-repeat: no-repeat;
+}
+@mixin icon-feature-chat($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('..\source\img\svg-icons\png\feature-chat.png');
+    background-repeat: no-repeat;
+}
+@mixin icon-feature-location($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('..\source\img\svg-icons\png\feature-location.png');
+    background-repeat: no-repeat;
+}
+@mixin icon-feature-profile($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('..\source\img\svg-icons\png\feature-profile.png');
+    background-repeat: no-repeat;
+}
+@mixin icon-feature-settings($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('..\source\img\svg-icons\png\feature-settings.png');
+    background-repeat: no-repeat;
+}
+@mixin icon-feature-smile($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('..\source\img\svg-icons\png\feature-smile.png');
+    background-repeat: no-repeat;
+}
+@mixin icon-feature-upload($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('..\source\img\svg-icons\png\feature-upload.png');
+    background-repeat: no-repeat;
+}

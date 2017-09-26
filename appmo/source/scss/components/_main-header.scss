@@ -1,0 +1,11 @@
+.main-header {
+  background-color: #fff;
+
+  
+
+  &__inner {
+    @include container();
+
+    position: relative;
+  }
+}

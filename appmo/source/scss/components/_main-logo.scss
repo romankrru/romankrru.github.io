@@ -1,0 +1,48 @@
+.main-logo {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 200px);
+
+  margin: 0;
+  padding: 0;
+  width: 400px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 50px;
+
+  font-family: 'Exo';
+  font-weight: 600;
+  color: #919191;
+  font-size: 33px;
+  text-align: center;
+
+  background-color: #fff;
+  background-clip: content-box;
+
+  & a {
+    text-decoration: none;
+    color: #919191;
+  }
+
+  &__big-text {
+    color: #de5749;
+    font-size: 50px;
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 400px;
+    height: 50px;
+
+    background-image: url('../img/logo-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: block;
+  }
+}

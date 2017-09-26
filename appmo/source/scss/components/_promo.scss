@@ -1,0 +1,61 @@
+.promo {
+  min-width: 1180px;
+
+  background-image: url('../img/promo-bg.jpg');
+  background-clip: padding-box;
+  background-size: 100% 100%;  
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+
+  border-top: 1px solid transparent;
+
+  &__inner {
+    @include container();
+  }
+
+  &__text {
+    padding: 25px 80px;
+    width: 760px;
+    margin: 0 auto;
+    margin-top: 100px;
+
+    text-align: center;
+    color: #fff;
+
+    border-radius: 20px;
+    background-color: rgba(222, 87, 73, .6);
+  }
+
+  &__text-heading {
+    margin: 0;
+
+    font-family: 'Exo';
+    font-size: 41px;
+    font-weight: 500;
+  }
+
+  &__text-desc {
+    font-family: 'Exo';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  &__content {
+    position: relative;
+    top: 50px;
+
+    display: flex;
+    justify-content: space-between;
+    width: 1030px;
+    margin: 0 auto;
+  }
+
+  &__phone-img {
+    display: block;
+    height: 623px;
+    width: 408px;
+    margin: 0;
+    padding: 0;
+  }
+}

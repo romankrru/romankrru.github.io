@@ -1,0 +1,21 @@
+.btn {
+  display: inline-block;
+
+  padding: 15px 20px;
+
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: $white;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  border-radius: 4px;
+  border-bottom: 3px solid darken($coral, 30%);
+  background-color: $coral;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: darken($coral, 5%);
+}

@@ -1,0 +1,101 @@
+.newsletter {
+  position: relative;
+  padding-top: 103px;
+  min-width: 1180px;
+
+  background-color: #d34f41;
+
+  &__heading {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 15px;
+
+    font-family: 'Exo';
+    font-weight: 100;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+  }
+
+  &__desc {
+    width: 800px;
+    margin: 0 auto;
+
+    font-family: 'Exo';
+    font-weight: 100;
+    font-size: 17px;
+    line-height: 33px;
+    color: #fff;
+    text-align: center;
+  }
+
+  &__form {
+    position: relative;
+
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 90px;
+    padding-bottom: 65px;
+  }
+
+  &__form::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @include icon-border(800px, 230px);
+  }
+
+  &__email-input {
+    position: relative;
+
+    width: 760px;
+    padding-right: 20px;
+    padding-left: 20px;
+    height: 230px;
+    background: transparent;
+
+    font-family: 'Exo';
+    font-weight: 100;
+    color: #fff;
+    font-size: 42px;
+    text-align: center;
+
+    outline: none;
+	  border: none;
+  }
+
+
+  &__email-input::-webkit-input-placeholder {color: #fff;}
+  &__email-input:-moz-placeholder {color: #fff;}
+  &__email-input::-moz-placeholder {color: #fff;}
+  &__email-input:-ms-input-placeholder {color: #fff;}
+
+  &__email-input:focus::-webkit-input-placeholder {color: transparent;}
+  &__email-input:focus:-moz-placeholder {color: transparent;}
+  &__email-input:focus::-moz-placeholder {color: transparent;}
+  &__email-input:focus:-ms-input-placeholder {color: transparent;}
+
+  &__email-input:focus {
+    border: none;
+  }
+
+  &::before {
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 103px;
+    
+    background-image: url('../img/newsletter-before-bg.jpg');
+    background-position: center top;
+    background-size: 100% 100%;
+  }
+}

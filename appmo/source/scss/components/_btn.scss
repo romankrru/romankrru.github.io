@@ -1,0 +1,115 @@
+.btn {
+  position: relative;
+
+  display: block;
+  width: 270px;
+  height: 100px;
+  padding: 0;
+  margin: 0;
+
+  font-family: 'Exo';
+  font-size: 25px;
+  line-height: 25px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  
+  cursor: pointer;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  &__text {
+    position: absolute;
+    top: 40px;
+
+    display: block;
+    width: 270px;
+
+    text-align: center;
+  }
+
+  & svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  & svg path {
+    transition: all .2s ease-in;
+  }
+
+  &:hover {
+    animation-name: anim;
+    animation-duration: .6s;
+  }
+
+  &:hover svg path {
+    fill-opacity: 1;
+  }
+
+  @keyframes anim {
+    from {
+      transform: scale3d(1, 1, 1);
+    }
+
+    10%, 20% {
+      transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%, 50%, 70%, 90% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%, 60%, 80% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    to {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+  &--feedback {
+    width: 1170px;
+    height: 60px;
+
+    line-height: 60px;
+    font-weight: 400;
+    color: #de5749;
+    text-transform: none;
+
+    background-color: #fff;
+    transition: all .2s ease;
+  }
+
+  
+
+  &--feedback:hover {
+    animation-name: none;
+    background-color: #de5749;
+    color: #fff;
+  }
+
+  &--promo {
+    margin-top: 150px;
+  }
+
+  &--newsletter {
+    @include icon-border-subscribe(210px, 115px);
+
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -105px;
+
+    color: #d34f41;
+
+    & .btn__text {
+      top: 45px;
+      width: 210px;
+    }
+  }
+}

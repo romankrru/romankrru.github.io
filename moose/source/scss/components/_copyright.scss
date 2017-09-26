@@ -1,0 +1,14 @@
+.copyright {
+  padding: 25px 10px;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #cacaca;
+
+  background-color: #2d3134;
+
+  &__inner {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+}

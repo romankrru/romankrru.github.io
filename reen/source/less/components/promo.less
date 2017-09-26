@@ -1,0 +1,157 @@
+.promo {
+  .clearfix();
+
+  padding: 10px;
+  padding-top: 30px;
+
+  background-color: @white;
+
+  @media @desktop {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 130px;
+  }
+
+  &__inner {
+    @media @desktop {
+      max-width: 1180px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-top: 100px;
+      margin: 0 auto;
+    }
+  }
+
+  &__heading {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+
+    font-family: @font-Lato;
+    font-weight: 700;
+    font-size: 44px;
+    color: @blue;
+    line-height: 54px;
+    text-align: center;
+
+    @media @desktop {
+      padding-left: 200px;
+      padding-right: 200px;
+    }
+  }
+
+  &__descr {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 40px;
+
+    font-family: @font-Source-Sans;
+    font-size: 22px;
+    line-height: 34px;
+    text-align: center;
+    color: @light-blue;
+
+    @media @desktop {
+      padding-left: 200px;
+      padding-right: 200px;
+      margin-bottom: 70px;
+    }
+  }
+
+  &__items {
+    @media @desktop {
+      .clearfix();
+      
+      width: 1092px;
+      margin: 0 auto;
+    }
+  }
+  
+  &__item {
+    margin-bottom: 30px;
+
+    @media @tablet {
+      float: left;
+      margin-bottom: 0;
+      width: 31.13%;
+      margin-right: 3.3%;
+
+      &:last-child {
+        margin-right: 0;  
+      } 
+    }
+
+    @media @desktop {
+      position: relative;
+
+      width: 270px;
+      margin-right: 0;
+      padding-left: 94px;
+    }
+  }
+
+  &__item-heading {
+    margin: 0;
+    padding: 0;
+
+    font-family: @font-Lato;
+    font-size: 26px;
+    line-height: 34px;
+    color: @blue;
+    text-align: center;
+
+    @media @desktop {
+      text-align: left;
+    }
+  }
+
+  &__item-desc {
+    font-family: @font-Source-Sans;
+    font-size: 16px;
+    line-height: 25px;
+    color: @light-blue;
+    text-align: center;
+
+    @media @desktop {
+      text-align: left;
+    }
+  }
+
+  .promo__item-icon() {
+    margin: 0 auto;
+    width: 64px;
+    height: 64px;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    @media @desktop {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__item-icon-heart {
+    .promo__item-icon();
+
+    background-image: url('../img/icon-heart.svg');
+    
+  }
+
+  &__item-icon-lamp {
+    .promo__item-icon();
+
+    background-image: url('../img/icon-lamp.svg');
+    
+  }
+
+  &__item-icon-star {
+    .promo__item-icon();
+
+    background-image: url('../img/icon-star.svg');
+    
+  }
+}
+
+

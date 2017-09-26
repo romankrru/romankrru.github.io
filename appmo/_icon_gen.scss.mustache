@@ -1,0 +1,10 @@
+{{#items}}
+@mixin icon-{{slug}}($width, $height) {
+    width: $width;
+    height: $height;
+
+    background-size: contain;
+    background-image: url('{{{datauri}}}');
+    background-repeat: no-repeat;
+}
+{{/items}}

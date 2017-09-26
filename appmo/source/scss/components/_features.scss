@@ -1,0 +1,115 @@
+.features {
+  position: relative;
+  
+  margin-top: 50px;
+  padding-top: 190px;
+  min-width: 1180px;
+
+  background-color: #de5749;
+
+  &__inner {
+    @include container();
+  }
+
+  &__text {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-weight: 100;
+  }
+
+  &__text-heading {
+    margin: 0;
+    padding: 0;
+
+    font-weight: 100;
+    font-size: 50px;
+  }
+
+  &__text-desc {
+    font-size: 17px;
+    line-height: 24px;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin-top: 100px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+
+    width: 580px;
+  }
+
+  &__item-text {
+    width: 470px;
+
+    font-family: 'Exo';
+    color: #fff;
+  }
+
+  &__item-heading {
+    margin: 0;
+    margin-bottom: 25px;
+    padding: 0;
+
+    font-size: 33px;
+  }
+
+  &__item-desc {
+    margin: 0;
+    margin-bottom: 60px;
+    padding: 0;
+
+    font-size: 17px;
+    line-height: 21px;
+  }
+
+  &__item-icon-settings  {
+    @include icon-feature-settings(75px, 62px);
+  }
+
+  &__item-icon-profile {
+    @include icon-feature-profile(75px, 62px);
+  }
+
+  &__item-icon-location {
+    @include icon-feature-location(75px, 62px);
+  }
+
+  &__item-icon-chat {
+    @include icon-feature-chat(75px, 62px);
+  }
+
+  &__item-icon-smile {
+    @include icon-feature-smile(75px, 62px);
+  }
+
+  &__item-icon-upload {
+    @include icon-feature-upload(75px, 62px);
+  }
+
+
+  &::before {
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 129px;
+    
+    background-image: url('../img/features-before-bg.jpg');
+    background-position: center top;
+    background-size: 100% 100%;
+  }
+}

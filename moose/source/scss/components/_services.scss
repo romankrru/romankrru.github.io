@@ -1,0 +1,184 @@
+.services {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  background-color: #fbfbfb;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+
+  &__inner {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+
+  &__heading {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  &__desc {
+    display: none;
+  }
+
+  &__desc--active {
+    @include tablet {
+      display: block;
+      padding: 0 20px;
+      margin-bottom: 50px;
+
+      font-family: 'Roboto Slab', serif;
+      font-weight: lighter;
+      font-size: 18px;
+      line-height: 32px;
+      text-align: center;
+
+      animation: anim .3s ease-in-out;
+    }
+  }
+  
+  @keyframes anim {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+    1% {
+      display: block;
+      opacity: 0;
+      transform: scale(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &__toggles {
+    @include tablet {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  &__toggles-group {
+    display: flex;
+    justify-content: space-around;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+
+  &__toggle {
+    text-align: center;
+    width: 104px;
+  }
+
+  &__toggle:hover {
+    @include tablet {
+      cursor: pointer;
+    }
+  }
+
+  &__toggle--active &__toggle-img {
+    @include tablet {
+      position: relative;
+
+      border-color: $coral;
+    }
+  }
+
+  &__toggle--active &__toggle-img::before {
+    @include tablet {
+      content: '';
+      display: block;
+
+      position: absolute;
+      top: -5px;
+      left: 50%;
+
+      width: 6px;
+      height: 6px;
+      margin-left: -3px;
+
+      border-top: 2px solid $coral;
+      border-right: 2px solid $coral;
+
+      background-color: white;
+      transform: rotate(-45deg)
+    }
+  }
+
+  &__toggle--active &__toggle-desc {
+    @include tablet{
+      color: $coral;
+    }
+  }
+
+  &__toggle-img {
+    position: relative;
+
+    display: block;
+    width: 100px;
+    height: 100px;
+
+    border: 2px solid #c5c5c5;
+    border-radius: 50%;
+  }
+
+  &__toggle-desc {
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    color: #bbbbbb;
+  }
+
+  .laptop-icon,
+  .film-icon,
+  .camera-icon,
+  .brush-icon {
+    position: absolute;
+  }
+
+  .laptop-icon path,
+  .film-icon path,
+  .camera-icon path,
+  .brush-icon path {
+    fill: #bbb;
+    fill-rule: evenodd;
+  }
+
+  &__toggle--active &__toggle-img path {
+    @include tablet {
+      fill: $coral; 
+    }
+  }
+
+  .laptop-icon {
+    top: 38px;
+    left: 34px;
+  }
+
+  .film-icon {
+    top: 36px;
+    left: 39px;
+  }
+
+  .camera-icon {
+    top: 39px;
+    left: 36px;
+  }
+
+  .brush-icon {
+    top: 36px;
+    left: 34px;
+  }
+}
