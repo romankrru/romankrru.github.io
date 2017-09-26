@@ -1,0 +1,310 @@
+.wrapper {
+  width: 100%; }
+
+body {
+  width: 100% !important;
+  min-width: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  margin: 0;
+  Margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+img {
+  outline: none;
+  text-decoration: none;
+  -ms-interpolation-mode: bicubic;
+  width: auto;
+  max-width: 100%;
+  clear: both;
+  display: block; }
+
+center {
+  width: 100%;
+  min-width: 600px; }
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse; }
+
+td {
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  border-collapse: collapse !important; }
+
+table, tr, td {
+  padding: 0;
+  vertical-align: top;
+  text-align: left; }
+
+@media only screen {
+  html {
+    min-height: 100%;
+    background: #f0f2ea; } }
+
+table.body {
+  background: #f0f2ea;
+  height: 100%;
+  width: 100%; }
+
+table.container {
+  background: #f0f2ea;
+  width: 600px;
+  margin: 0 auto;
+  Margin: 0 auto;
+  text-align: inherit; }
+
+table.row {
+  padding: 0;
+  width: 100%;
+  position: relative; }
+
+table.spacer {
+  width: 100%; }
+  table.spacer td {
+    mso-line-height-rule: exactly; }
+
+table.container table.row {
+  display: table; }
+
+th.columns {
+  margin: 0 auto;
+  Margin: 0 auto;
+  padding-left: 30px;
+  padding-bottom: 16px; }
+
+th.columns.last {
+  padding-right: 30px; }
+
+th.columns table:not(.button) {
+  width: 100%; }
+
+th.large-4 {
+  width: 170px;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+th.large-4.last {
+  padding-right: 30px; }
+
+th.large-6 {
+  width: 270px;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+th.large-6.first {
+  padding-left: 30px; }
+
+th.large-6.last {
+  padding-right: 30px; }
+
+th.large-8 {
+  width: 370px;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+th.large-8.first {
+  padding-left: 30px; }
+
+th.large-12 {
+  width: 570px;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+th.large-12.first {
+  padding-left: 30px; }
+
+th.large-12.last {
+  padding-right: 30px; }
+
+th.large-12 center {
+  min-width: 510px; }
+
+th.expander {
+  visibility: hidden;
+  width: 0;
+  padding: 0 !important; }
+
+img.float-center {
+  margin: 0 auto;
+  Margin: 0 auto;
+  float: none;
+  text-align: center; }
+
+table.float-center {
+  margin: 0 auto;
+  Margin: 0 auto;
+  float: none;
+  text-align: center; }
+
+body,
+table.body,
+td,
+th,
+a {
+  color: #0a0a0a;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  Margin: 0;
+  text-align: left;
+  line-height: 1.3; }
+
+body,
+table.body,
+td,
+th {
+  font-size: 16px;
+  line-height: 1.3; }
+
+a {
+  color: #2199e8;
+  text-decoration: none; }
+  a:hover {
+    color: #147dc2; }
+  a:active {
+    color: #147dc2; }
+  a:visited {
+    color: #2199e8; }
+
+span.preheader {
+  display: none !important;
+  visibility: hidden;
+  mso-hide: all !important;
+  font-size: 1px;
+  color: #f0f2ea;
+  line-height: 1px;
+  max-height: 0px;
+  max-width: 0px;
+  opacity: 0;
+  overflow: hidden; }
+
+@media only screen and (max-width: 630px) {
+  table.body img {
+    width: auto;
+    height: auto; }
+  table.body center {
+    min-width: 0 !important; }
+  table.body .container {
+    width: 95% !important; }
+  table.body .columns {
+    height: auto !important;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 30px !important;
+    padding-right: 30px !important; }
+  th.small-12 {
+    display: inline-block !important;
+    width: 100% !important; } }
+
+.body {
+  background-color: #f0f2ea; }
+
+.promo-heading {
+  font-family: Arial;
+  font-size: 14px;
+  line-height: 18px;
+  color: #636758;
+  text-transform: uppercase; }
+
+.main {
+  box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.75); }
+
+.hero {
+  background: #565743 url("https://rm07ru.000webhostapp.com/gallery/sheeps-bg.jpg");
+  background-size: cover; }
+
+.hero__heading {
+  font-family: 'Pacifico', Arial, cursive;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: #ffffff; }
+
+.hero__line {
+  height: 2px;
+  width: 200px;
+  background-color: white; }
+
+.hero__desc {
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-transform: uppercase; }
+
+.section {
+  background-color: #fff; }
+  .section__heading {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 24px;
+    color: #000; }
+  .section__hr {
+    width: 90%;
+    height: 2px;
+    background-color: #e5e5e5; }
+
+.article__title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #6d7e44;
+  font-weight: bold; }
+
+.article__text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  color: #333; }
+
+.article a {
+  text-decoration: none;
+  color: inherit; }
+
+.contacts__company-name {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.contacts__address {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px; }
+
+.contacts a {
+  color: #6d7e44; }
+
+.links {
+  text-align: left; }
+  .links__item {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: top; }
+  .links__fb {
+    background-image: url("https://rm07ru.000webhostapp.com/gallery/icon-f.jpg"); }
+  .links__tw {
+    background-image: url("https://rm07ru.000webhostapp.com/gallery/icon-tw.jpg"); }
+  .links__t {
+    background-image: url("https://rm07ru.000webhostapp.com/gallery/icon-t.jpg"); }
+  .links__rss {
+    background-image: url("https://rm07ru.000webhostapp.com/gallery/icon-rss.jpg"); }
+
+.external-links a {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #6d7e44; }
+
+.footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #333; }
+  .footer a {
+    color: #333;
+    text-decoration: underline; }
