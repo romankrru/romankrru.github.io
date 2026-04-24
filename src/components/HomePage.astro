@@ -1,10 +1,12 @@
 ---
 import Container from "@components/Container.astro";
+import type { CollectionEntry } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, SOCIALS } from "@consts";
+import { render } from "astro:content";
 
 interface Props {
   title: string;
@@ -19,9 +21,9 @@ interface Props {
   workLink: string;
   connectTitle: string;
   connectText: string;
-  blog: any[];
-  projects: any[];
-  work: any[];
+  blog: CollectionEntry<"blog">[];
+  projects: CollectionEntry<"projects">[];
+  work: CollectionEntry<"work">[];
 }
 
 const {
@@ -41,6 +43,13 @@ const {
   projects,
   work,
 } = Astro.props;
+
+const renderedWork = await Promise.all(
+  work.map(async (entry) => {
+    const { Content } = await render(entry);
+    return { entry, Content };
+  }),
+);
 ---
 
 <PageLayout title={title} description={description}>
@@ -80,7 +89,7 @@ const {
         </div>
         <ul class="flex flex-col space-y-4">
           {
-            work.map((entry) => (
+            renderedWork.map(({ entry, Content }) => (
               <li>
                 <div class="text-sm opacity-75">
                   {dateRange(entry.data.dateStart, entry.data.dateEnd)}
@@ -90,7 +99,7 @@ const {
                 </div>
                 <div class="text-sm opacity-75">{entry.data.role}</div>
                 <article>
-                  <entry.Content />
+                  <Content />
                 </article>
               </li>
             ))
