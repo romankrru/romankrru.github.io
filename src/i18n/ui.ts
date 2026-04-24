@@ -28,6 +28,7 @@ export const ui = {
     "blog.post.back": "Back to blog",
     "projects.heading": "Projects",
     "projects.post.back": "Back to projects",
+    "work.heading": "Work",
   },
   en: {
     "header.blog": "blog",
@@ -49,5 +50,6 @@ export const ui = {
     "blog.post.back": "Back to blog",
     "projects.heading": "Projects",
     "projects.post.back": "Back to projects",
+    "work.heading": "Work",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
