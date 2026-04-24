@@ -1,7 +1,9 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { type Lang } from "@i18n/ui";
 
-export async function getWorkData() {
+export async function getWorkData(lang: Lang) {
   const collection = (await getCollection("work"))
+    .filter((item) => item.data.lang === lang)
     .sort(
       (a, b) =>
         new Date(b.data.dateStart).valueOf() -

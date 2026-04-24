@@ -1,4 +1,5 @@
 ---
+lang: ru
 company: "UMAX AGENCY"
 role: "Frontend-разработчик"
 dateStart: "09/01/2017"
