@@ -12,20 +12,13 @@ export async function getHomeData() {
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
     .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
-  const allwork = (await getCollection("work"))
+  const work = (await getCollection("work"))
     .sort(
       (a, b) =>
         new Date(b.data.dateStart).valueOf() -
         new Date(a.data.dateStart).valueOf(),
     )
     .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
-
-  const work = await Promise.all(
-    allwork.map(async (item) => {
-      const { Content } = await item.render();
-      return { ...item, Content };
-    }),
-  );
 
   return { blog, projects, work };
 }
