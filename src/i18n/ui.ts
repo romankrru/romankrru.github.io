@@ -24,6 +24,8 @@ export const ui = {
     "home.connect.title": "Let's Connect",
     "home.connect.text":
       "If you want to get in touch with me about something or just to say hi, reach out on social media or send me an email.",
+    "blog.heading": "Blog",
+    "blog.post.back": "Back to blog",
   },
   en: {
     "header.blog": "blog",
@@ -41,5 +43,7 @@ export const ui = {
     "home.connect.title": "Let's Connect",
     "home.connect.text":
       "If you want to get in touch with me about something or just to say hi, reach out on social media or send me an email.",
+    "blog.heading": "Blog",
+    "blog.post.back": "Back to blog",
   },
 } as const satisfies Record<Lang, Record<string, string>>;

@@ -12,13 +12,14 @@ export async function getStaticPaths() {
     props: post,
   }));
 }
-
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
+
 const lang = getLangFromUrl(Astro.url.pathname);
 const t = useTranslations(lang);
+
 const backLink = `/${lang === "ru" ? "blog" : `en/blog`}`;
 ---
 
