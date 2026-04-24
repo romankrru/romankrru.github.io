@@ -26,6 +26,8 @@ export const ui = {
       "If you want to get in touch with me about something or just to say hi, reach out on social media or send me an email.",
     "blog.heading": "Blog",
     "blog.post.back": "Back to blog",
+    "projects.heading": "Projects",
+    "projects.post.back": "Back to projects",
   },
   en: {
     "header.blog": "blog",
@@ -45,5 +47,7 @@ export const ui = {
       "If you want to get in touch with me about something or just to say hi, reach out on social media or send me an email.",
     "blog.heading": "Blog",
     "blog.post.back": "Back to blog",
+    "projects.heading": "Projects",
+    "projects.post.back": "Back to projects",
   },
 } as const satisfies Record<Lang, Record<string, string>>;

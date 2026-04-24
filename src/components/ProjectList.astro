@@ -1,0 +1,33 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  projects: any[];
+}
+
+const { title, description, heading, projects } = Astro.props;
+---
+
+<PageLayout title={title} description={description}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        {heading}
+      </div>
+      <ul class="animate flex flex-col gap-4">
+        {
+          projects.map((project) => (
+            <li>
+              <ArrowCard entry={project} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</PageLayout>

@@ -1,15 +1,15 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
+export type BlogPostsByYear = {
+  [year: string]: CollectionEntry<"blog">[];
+};
+
 export async function getBlogData() {
   const data = (await getCollection("blog"))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-  type Acc = {
-    [year: string]: CollectionEntry<"blog">[];
-  };
-
-  const posts = data.reduce((acc: Acc, post) => {
+  const posts = data.reduce((acc: BlogPostsByYear, post) => {
     const year = post.data.date.getFullYear().toString();
     if (!acc[year]) {
       acc[year] = [];
