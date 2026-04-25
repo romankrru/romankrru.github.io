@@ -7,3 +7,4 @@ dateEnd: "02/01/2018"
 ---
 
 Maintenance and refactoring of existing code, development in JavaScript, CSS.
+
