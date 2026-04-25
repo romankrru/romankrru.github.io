@@ -4,8 +4,9 @@ export type BlogPostsByYear = {
   [year: string]: CollectionEntry<"blog">[];
 };
 
-export async function getBlogData() {
+export async function getBlogData(lang: string) {
   const data = (await getCollection("blog"))
+    .filter((post) => post.data.lang === lang)
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 

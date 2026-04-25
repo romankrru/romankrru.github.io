@@ -4,9 +4,8 @@ import { getBlogData } from "@lib/blog";
 import { useTranslations, getLangFromUrl } from "@i18n/utils";
 import { BLOG } from "@consts";
 
-const { posts, years } = await getBlogData();
-
 const lang = getLangFromUrl(Astro.url.pathname);
+const { posts, years } = await getBlogData(lang);
 const t = useTranslations(lang);
 ---
 
