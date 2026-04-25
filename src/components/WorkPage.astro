@@ -3,16 +3,26 @@ import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import { dateRange } from "@lib/utils";
 import { type Lang } from "@i18n/ui";
+import type { CollectionEntry } from "astro:content";
+
+type WorkEntry = CollectionEntry<"work">;
 
 interface Props {
   title: string;
   description: string;
   heading: string;
   lang: Lang;
-  work: any[];
+  work: WorkEntry[];
 }
 
 const { title, description, heading, work } = Astro.props;
+
+const renderedWork = await Promise.all(
+  work.map(async (entry) => {
+    const { Content } = await entry.render();
+    return { entry, Content };
+  })
+);
 ---
 
 <PageLayout title={title} description={description}>
@@ -23,7 +33,7 @@ const { title, description, heading, work } = Astro.props;
       </div>
       <ul class="flex flex-col space-y-4">
         {
-          work.map((entry) => (
+          renderedWork.map(({ entry, Content }) => (
             <li class="animate">
               <div class="text-sm opacity-75">
                 {dateRange(entry.data.dateStart, entry.data.dateEnd, Astro.props.lang)}
@@ -35,7 +45,7 @@ const { title, description, heading, work } = Astro.props;
                 {entry.data.role}
               </div>
               <article>
-                <entry.Content />
+                <Content />
               </article>
             </li>
           ))
