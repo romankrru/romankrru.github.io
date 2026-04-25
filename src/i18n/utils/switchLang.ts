@@ -1,31 +1,40 @@
-import { defaultLang, type Lang } from "../ui";
+import { defaultLang, type Lang } from "@i18n/ui";
 import { getLangFromUrl } from "./getLangFromUrl";
+
+function stripLangPrefix(pathname: string, lang: Lang): string {
+  if (lang === defaultLang) return pathname;
+  return pathname.replace(`/${lang}`, "") || "/";
+}
+
+function addLangPrefix(pathname: string, lang: Lang): string {
+  return lang === defaultLang ? pathname : `/${lang}${pathname}`;
+}
+
+function transformSlug(slug: string, fromLang: Lang, toLang: Lang): string {
+  const base = slug.endsWith(`-${fromLang}`)
+    ? slug.slice(0, -fromLang.length - 1)
+    : slug;
+
+  return toLang === defaultLang ? base : `${base}-${toLang}`;
+}
+
+function transformBlogPath(path: string, fromLang: Lang, toLang: Lang): string {
+  if (!path.startsWith("/blog/")) return path;
+
+  const segments = path.split("/");
+  segments[segments.length - 1] = transformSlug(
+    segments[segments.length - 1],
+    fromLang,
+    toLang,
+  );
+  return segments.join("/");
+}
 
 export function switchLang(pathname: string): string {
   const currentLang = getLangFromUrl(pathname);
-  const targetLang = currentLang === "ru" ? "en" : "ru";
+  const targetLang: Lang = currentLang === "ru" ? "en" : "ru";
 
-  let strippedPath =
-    currentLang === defaultLang
-      ? pathname
-      : pathname.replace(`/${currentLang}`, "") || "/";
-
-  if (strippedPath.startsWith("/blog/")) {
-    const parts = strippedPath.split("/");
-    const lastPart = parts[parts.length - 1];
-    const currentSuffix = `-${currentLang}`;
-    const targetSuffix = `-${targetLang}`;
-
-    if (targetLang === defaultLang && lastPart.endsWith(currentSuffix)) {
-      parts[parts.length - 1] = lastPart.replace(currentSuffix, "");
-      strippedPath = parts.join("/");
-    } else if (targetLang !== defaultLang && !lastPart.endsWith(targetSuffix)) {
-      parts[parts.length - 1] = lastPart + targetSuffix;
-      strippedPath = parts.join("/");
-    }
-  }
-
-  return targetLang === defaultLang
-    ? strippedPath
-    : `/${targetLang}${strippedPath}`;
+  const stripped = stripLangPrefix(pathname, currentLang);
+  const transformed = transformBlogPath(stripped, currentLang, targetLang);
+  return addLangPrefix(transformed, targetLang);
 }
