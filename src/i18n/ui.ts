@@ -10,8 +10,8 @@ export const defaultLang: Lang = "ru";
 export const ui = {
   ru: {
     "header.blog": "блог",
-    "header.work": "work",
-    "header.projects": "projects",
+    "header.work": "опыт",
+    "header.projects": "проекты",
     "home.hero.title": "Привет 👋🏻",
     "home.hero.text":
       "Я Frontend-разработчик из Ростова-на-Дону. Здесь пишу о том, что узнаю, пробую и нахожу интересным.",
