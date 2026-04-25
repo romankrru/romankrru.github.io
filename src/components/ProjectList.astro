@@ -2,15 +2,17 @@
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
+import { type Lang } from "@i18n/ui";
 
 interface Props {
   title: string;
   description: string;
   heading: string;
+  lang: Lang;
   projects: any[];
 }
 
-const { title, description, heading, projects } = Astro.props;
+const { title, description, heading, lang, projects } = Astro.props;
 ---
 
 <PageLayout title={title} description={description}>
@@ -23,7 +25,7 @@ const { title, description, heading, projects } = Astro.props;
         {
           projects.map((project) => (
             <li>
-              <ArrowCard entry={project} />
+              <ArrowCard entry={project} lang={lang} />
             </li>
           ))
         }

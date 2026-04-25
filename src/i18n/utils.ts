@@ -14,6 +14,10 @@ export function useTranslations(lang: Lang) {
   };
 }
 
+export function localizedPath(path: string, lang: Lang): string {
+  return lang === defaultLang ? path : `/${lang}${path}`;
+}
+
 /**
  * Переключает язык в pathname
  * "/about"                    → "/en/about"                 (ru → en)

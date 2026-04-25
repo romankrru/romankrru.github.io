@@ -8,6 +8,7 @@ import { dateRange } from "@lib/utils";
 import { SITE, SOCIALS } from "@consts";
 import { render } from "astro:content";
 import { type Lang } from "@i18n/ui";
+import { localizedPath } from "@i18n/utils";
 
 interface Props {
   title: string;
@@ -36,6 +37,10 @@ const renderedWork = await Promise.all(
     return { entry, Content };
   }),
 );
+
+const blogHref = localizedPath("/blog", props.lang);
+const projectsHref = localizedPath("/projects", props.lang);
+const workHref = localizedPath("/work", props.lang);
 ---
 
 <PageLayout title={props.title} description={props.description}>
@@ -53,13 +58,13 @@ const renderedWork = await Promise.all(
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">{props.postsTitle}</h5>
-          <Link href="/blog">{props.postsLink}</Link>
+          <Link href={blogHref}>{props.postsLink}</Link>
         </div>
         <ul class="flex flex-col gap-4">
           {
             props.blog.map((post) => (
               <li>
-                <ArrowCard entry={post} />
+                <ArrowCard entry={post} lang={props.lang} />
               </li>
             ))
           }
@@ -71,7 +76,7 @@ const renderedWork = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             {props.workTitle}
           </h5>
-          <Link href="/work">{props.workLink}</Link>
+          <Link href={workHref}>{props.workLink}</Link>
         </div>
         <ul class="flex flex-col space-y-4">
           {
@@ -98,13 +103,13 @@ const renderedWork = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             {props.projectsTitle}
           </h5>
-          <Link href="/projects">{props.projectsLink}</Link>
+          <Link href={projectsHref}>{props.projectsLink}</Link>
         </div>
         <ul class="flex flex-col gap-4">
           {
             props.projects.map((project) => (
               <li>
-                <ArrowCard entry={project} />
+                <ArrowCard entry={project} lang={props.lang} />
               </li>
             ))
           }

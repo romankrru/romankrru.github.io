@@ -3,16 +3,18 @@ import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import type { BlogPostsByYear } from "@lib/blog";
+import { type Lang } from "@i18n/ui";
 
 interface Props {
   title: string;
   description: string;
   heading: string;
+  lang: Lang;
   posts: BlogPostsByYear;
   years: string[];
 }
 
-const { title, description, heading, posts, years } = Astro.props;
+const { title, description, heading, lang, posts, years } = Astro.props;
 ---
 
 <PageLayout title={title} description={description}>
@@ -33,7 +35,7 @@ const { title, description, heading, posts, years } = Astro.props;
                   {
                     posts[year].map((post) => (
                       <li>
-                        <ArrowCard entry={post} />
+                        <ArrowCard entry={post} lang={lang} />
                       </li>
                     ))
                   }
