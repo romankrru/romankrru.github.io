@@ -2,6 +2,10 @@
 import Container from "@components/Container.astro";
 import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
+import { useTranslations, getLangFromUrl } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url.pathname);
+const t = useTranslations(lang);
 ---
 
 <footer class="animate">
@@ -17,7 +21,7 @@ import BackToTop from "@components/BackToTop.astro";
       </div>
       <div class="flex flex-wrap gap-1 items-center">
         <button
-          title="Light theme"
+          title={t("footer.theme.light")}
           id="light-theme-button"
           class="group size-8 flex items-center justify-center rounded-full"
         >
@@ -45,7 +49,7 @@ import BackToTop from "@components/BackToTop.astro";
           </svg>
         </button>
         <button
-          title="Dark theme"
+          title={t("footer.theme.dark")}
           id="dark-theme-button"
           class="group size-8 flex items-center justify-center rounded-full"
         >
@@ -65,7 +69,7 @@ import BackToTop from "@components/BackToTop.astro";
           </svg>
         </button>
         <button
-          title="System theme"
+          title={t("footer.theme.system")}
           id="system-theme-button"
           class="group size-8 flex items-center justify-center rounded-full"
         >

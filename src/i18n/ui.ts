@@ -29,6 +29,9 @@ export const ui = {
     "projects.heading": "Projects",
     "projects.post.back": "Back to projects",
     "work.heading": "Work",
+    "footer.theme.light": "Светлая тема",
+    "footer.theme.dark": "Тёмная тема",
+    "footer.theme.system": "Системная тема",
   },
   en: {
     "header.blog": "blog",
@@ -51,5 +54,8 @@ export const ui = {
     "projects.heading": "Projects",
     "projects.post.back": "Back to projects",
     "work.heading": "Work",
+    "footer.theme.light": "Light theme",
+    "footer.theme.dark": "Dark theme",
+    "footer.theme.system": "System theme",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
