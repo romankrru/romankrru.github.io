@@ -5,11 +5,13 @@ import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
+import { type Lang } from "@i18n/ui";
 
 interface Props {
   title: string;
   description: string;
   date: Date;
+  lang: Lang;
   demoURL?: string;
   repoURL?: string;
   Content: any;
@@ -22,6 +24,7 @@ const {
   title,
   description,
   date,
+  lang,
   demoURL,
   repoURL,
   Content,
@@ -41,7 +44,7 @@ const {
     <div class="space-y-1 my-10">
       <div class="animate flex items-center gap-1.5">
         <div class="font-base text-sm">
-          <FormattedDate date={date} />
+          <FormattedDate date={date} lang={lang} />
         </div>
         &bull;
         <div class="font-base text-sm">

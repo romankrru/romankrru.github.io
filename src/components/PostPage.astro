@@ -5,18 +5,20 @@ import PageLayout from "@layouts/PageLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
+import { type Lang } from "@i18n/ui";
 
 interface Props {
   title: string;
   description: string;
   date: Date;
+  lang: Lang;
   Content: AstroComponentFactory;
   body: string;
   backLink: string;
   backText: string;
 }
 
-const { title, description, date, Content, body, backLink, backText } = Astro.props;
+const { title, description, date, lang, Content, body, backLink, backText } = Astro.props;
 ---
 
 <PageLayout title={title} description={description}>
@@ -29,7 +31,7 @@ const { title, description, date, Content, body, backLink, backText } = Astro.pr
     <div class="space-y-1 my-10">
       <div class="animate flex items-center gap-1.5">
         <div class="font-base text-sm">
-          <FormattedDate date={date} />
+          <FormattedDate date={date} lang={lang} />
         </div>
         &bull;
         <div class="font-base text-sm">
