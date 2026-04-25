@@ -15,6 +15,7 @@ export async function getHomeData(lang: Lang) {
     .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
   const work = (await getCollection("work"))
+    .filter((workItem) => workItem.data.lang === lang)
     .sort(
       (a, b) =>
         new Date(b.data.dateStart).valueOf() -
