@@ -29,7 +29,7 @@ const t = useTranslations(lang);
         <span class="text-gray-400">
           {`| `}
         </span>
-        <Link href={switchLang(Astro.url.pathname)}>
+        <Link href={switchLang(Astro.url.pathname)} title={t("header.lang.switch")}>
           {lang === "ru" ? "en" : "ru"}
         </Link>
       </nav>

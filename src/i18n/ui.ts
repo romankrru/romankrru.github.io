@@ -32,6 +32,7 @@ export const ui = {
     "footer.theme.light": "Светлая тема",
     "footer.theme.dark": "Тёмная тема",
     "footer.theme.system": "Системная тема",
+    "header.lang.switch": "Сменить язык на English",
   },
   en: {
     "header.blog": "blog",
@@ -57,5 +58,6 @@ export const ui = {
     "footer.theme.light": "Light theme",
     "footer.theme.dark": "Dark theme",
     "footer.theme.system": "System theme",
+    "header.lang.switch": "Switch language to Русский",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
