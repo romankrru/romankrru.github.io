@@ -3,13 +3,14 @@ import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import { type Lang } from "@i18n/ui";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
   title: string;
   description: string;
   heading: string;
   lang: Lang;
-  projects: any[];
+  projects: CollectionEntry<"projects">[];
 }
 
 const { title, description, heading, lang, projects } = Astro.props;
