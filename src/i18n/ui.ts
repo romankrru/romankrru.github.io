@@ -21,9 +21,9 @@ export const ui = {
     "home.projects.seeAll": "Смотреть все проекты",
     "home.work.title": "Опыт",
     "home.work.seeAll": "Смотреть все",
-    "home.connect.title": "Let's Connect",
+    "home.connect.title": "Связаться со мной",
     "home.connect.text":
-      "If you want to get in touch with me about something or just to say hi, reach out on social media or send me an email.",
+      "Если вы хотите связаться со мной по какому-либо вопросу или просто поздороваться, напишите мне в социальных сетях или отправьте письмо на электронную почту.",
     "blog.heading": "Блог",
     "blog.post.back": "Вернуться к блогу",
     "projects.heading": "Проекты",
