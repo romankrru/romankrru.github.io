@@ -32,7 +32,9 @@ export const ui = {
     "footer.theme.light": "Светлая тема",
     "footer.theme.dark": "Тёмная тема",
     "footer.theme.system": "Системная тема",
-    "header.lang.switch": "Switch to English",
+    "header.lang.switch": "Сменить язык на English",
+    "backToTop.title": "Вернуться наверх",
+    "backToTop.label": "Наверх",
   },
   en: {
     "header.blog": "blog",
@@ -58,6 +60,8 @@ export const ui = {
     "footer.theme.light": "Light theme",
     "footer.theme.dark": "Dark theme",
     "footer.theme.system": "System theme",
-    "header.lang.switch": "Переключить на Русский",
+    "header.lang.switch": "Switch to Russian",
+    "backToTop.title": "Back to top",
+    "backToTop.label": "Back to top",
   },
 } as const satisfies Record<Lang, Record<string, string>>;

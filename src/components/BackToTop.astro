@@ -1,4 +1,11 @@
-<button id="back-to-top" class="relative group w-fit flex pl-8 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+---
+import { useTranslations, getLangFromUrl } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url.pathname);
+const t = useTranslations(lang);
+---
+
+<button id="back-to-top" title={t("backToTop.title")} class="relative group w-fit flex pl-8 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="0 0 24 24"
@@ -7,6 +14,6 @@
     <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out" />
   </svg>
   <div class="text-sm">
-    Back to top
+    {t("backToTop.label")}
   </div>
 </button>
