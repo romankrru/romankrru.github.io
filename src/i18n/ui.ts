@@ -35,6 +35,9 @@ export const ui = {
     "header.lang.switch": "Сменить язык на English",
     "backToTop.title": "Вернуться наверх",
     "backToTop.label": "Наверх",
+    "blog.title": "Блог",
+    "projects.title": "Проекты",
+    "work.title": "Опыт",
   },
   en: {
     "header.blog": "blog",
@@ -63,5 +66,8 @@ export const ui = {
     "header.lang.switch": "Switch to Russian",
     "backToTop.title": "Back to top",
     "backToTop.label": "Back to top",
+    "blog.title": "Blog",
+    "projects.title": "Projects",
+    "work.title": "Work",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
