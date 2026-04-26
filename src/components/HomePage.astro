@@ -1,72 +1,57 @@
 ---
 import Container from "@components/Container.astro";
-import type { CollectionEntry } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
-import { SITE, SOCIALS } from "@consts";
+import { SITE, SOCIALS, HOME } from "@consts";
 import { render } from "astro:content";
-import { type Lang } from "@i18n/ui";
-import { localizedPath } from "@i18n/utils";
+import { getLangFromUrl, useTranslations, localizedPath } from "@i18n/utils";
+import { getHomeData } from "@lib/home";
 
-interface Props {
-  title: string;
-  description: string;
-  heroTitle: string;
-  heroText: string;
-  postsTitle: string;
-  postsLink: string;
-  projectsTitle: string;
-  projectsLink: string;
-  workTitle: string;
-  workLink: string;
-  connectTitle: string;
-  connectText: string;
-  lang: Lang;
-  blog: CollectionEntry<"blog">[];
-  projects: CollectionEntry<"projects">[];
-  work: CollectionEntry<"work">[];
-}
+const lang = getLangFromUrl(Astro.url.pathname);
+const t = useTranslations(lang);
+const { blog, projects, work } = await getHomeData(lang);
 
-const { props } = Astro;
+const title = t("home.title");
+const description = HOME.DESCRIPTION;
 
 const renderedWork = await Promise.all(
-  props.work.map(async (entry) => {
+  work.map(async (entry) => {
     const { Content } = await render(entry);
     return { entry, Content };
   }),
 );
 
-const blogHref = localizedPath("/blog", props.lang);
-const projectsHref = localizedPath("/projects", props.lang);
-const workHref = localizedPath("/work", props.lang);
+const blogHref = localizedPath("/blog", lang);
+const projectsHref = localizedPath("/projects", lang);
+const workHref = localizedPath("/work", lang);
 ---
 
-<PageLayout title={props.title} description={props.description}>
+<PageLayout {title} {description}>
   <Container>
     <h4 class="animate font-semibold text-black dark:text-white">
-      {props.heroTitle}
+      {t("home.hero.title")}
     </h4>
     <div class="space-y-16">
       <section>
         <article class="space-y-4">
-          <p class="animate">{props.heroText}</p>
+          <p class="animate">{t("home.hero.text")}</p>
         </article>
       </section>
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            {props.postsTitle}
+            {t("home.posts.title")}
           </h5>
-          <Link href={blogHref}>{props.postsLink}</Link>
+          <Link href={blogHref}>{t("home.posts.seeAll")}</Link>
         </div>
         <ul class="flex flex-col gap-4">
           {
-            props.blog.map((post) => (
+            blog.map((post) => (
               <li>
-                <ArrowCard entry={post} lang={props.lang} />
+                <ArrowCard entry={post} {lang} />
               </li>
             ))
           }
@@ -76,9 +61,9 @@ const workHref = localizedPath("/work", props.lang);
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            {props.workTitle}
+            {t("home.work.title")}
           </h5>
-          <Link href={workHref}>{props.workLink}</Link>
+          <Link href={workHref}>{t("home.work.seeAll")}</Link>
         </div>
         <ul class="flex flex-col space-y-4">
           {
@@ -88,7 +73,7 @@ const workHref = localizedPath("/work", props.lang);
                   {dateRange(
                     entry.data.dateStart,
                     entry.data.dateEnd,
-                    props.lang,
+                    lang,
                   )}
                 </div>
                 <div class="font-semibold text-black dark:text-white">
@@ -109,14 +94,14 @@ const workHref = localizedPath("/work", props.lang);
           <section class="animate space-y-6">
             <div class="flex flex-wrap gap-y-2 items-center justify-between">
               <h5 class="font-semibold text-black dark:text-white">
-                {props.projectsTitle}
+                {t("home.projects.title")}
               </h5>
-              <Link href={projectsHref}>{props.projectsLink}</Link>
+              <Link href={projectsHref}>{t("home.projects.seeAll")}</Link>
             </div>
             <ul class="flex flex-col gap-4">
-              {props.projects.map((project) => (
+              {projects.map((project) => (
                 <li>
-                  <ArrowCard entry={project} lang={props.lang} />
+                  <ArrowCard entry={project} {lang} />
                 </li>
               ))}
             </ul>
@@ -126,10 +111,10 @@ const workHref = localizedPath("/work", props.lang);
 
       <section class="animate space-y-4">
         <h5 class="font-semibold text-black dark:text-white">
-          {props.connectTitle}
+          {t("home.connect.title")}
         </h5>
         <article>
-          <p>{props.connectText}</p>
+          <p>{t("home.connect.text")}</p>
         </article>
         <ul class="flex flex-wrap gap-2">
           {

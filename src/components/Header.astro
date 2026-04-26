@@ -16,7 +16,7 @@ const t = useTranslations(lang);
 <header>
   <Container>
     <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
+      <Link href={localizedPath("/", lang)} underline={false}>
         <div class="font-semibold">
           {SITE.NAME}
         </div>

@@ -1,19 +1,5 @@
 ---
 import WorkPage from "@components/WorkPage.astro";
-import { getWorkData } from "@lib/work";
-import { useTranslations, getLangFromUrl } from "@i18n/utils";
-import { WORK } from "@consts";
-
-
-const lang = getLangFromUrl(Astro.url.pathname);
-const work = await getWorkData(lang);
-const t = useTranslations(lang);
 ---
 
-<WorkPage
-  title={t("work.title")}
-  description={WORK.DESCRIPTION}
-  heading={t("work.heading")}
-  lang={lang}
-  work={work}
-/>
+<WorkPage />

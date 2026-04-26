@@ -2,26 +2,23 @@
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
-import type { BlogPostsByYear } from "@lib/blog";
-import { type Lang } from "@i18n/ui";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { BLOG } from "@consts";
+import { getBlogData } from "@lib/blog";
 
-interface Props {
-  title: string;
-  description: string;
-  heading: string;
-  lang: Lang;
-  posts: BlogPostsByYear;
-  years: string[];
-}
+const lang = getLangFromUrl(Astro.url.pathname);
+const t = useTranslations(lang);
+const { posts, years } = await getBlogData(lang);
 
-const { title, description, heading, lang, posts, years } = Astro.props;
+const title = t("blog.title");
+const description = BLOG.DESCRIPTION;
 ---
 
-<PageLayout title={title} description={description}>
+<PageLayout {title} {description}>
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        {heading}
+        {t("blog.heading")}
       </div>
       <div class="space-y-4">
         {
@@ -35,7 +32,7 @@ const { title, description, heading, lang, posts, years } = Astro.props;
                   {
                     posts[year].map((post) => (
                       <li>
-                        <ArrowCard entry={post} lang={lang} />
+                        <ArrowCard entry={post} {lang} />
                       </li>
                     ))
                   }

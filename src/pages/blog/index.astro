@@ -1,19 +1,5 @@
 ---
 import BlogPage from "@components/BlogPage.astro";
-import { getBlogData } from "@lib/blog";
-import { useTranslations, getLangFromUrl } from "@i18n/utils";
-import { BLOG } from "@consts";
-
-const lang = getLangFromUrl(Astro.url.pathname);
-const { posts, years } = await getBlogData(lang);
-const t = useTranslations(lang);
 ---
 
-<BlogPage
-  title={t("blog.title")}
-  description={BLOG.DESCRIPTION}
-  heading={t("blog.heading")}
-  lang={lang}
-  posts={posts}
-  years={years}
-/>
+<BlogPage />

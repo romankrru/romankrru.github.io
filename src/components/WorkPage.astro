@@ -2,20 +2,16 @@
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import { dateRange } from "@lib/utils";
-import { type Lang } from "@i18n/ui";
-import type { CollectionEntry } from "astro:content";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { WORK } from "@consts";
+import { getWorkData } from "@lib/work";
 
-type WorkEntry = CollectionEntry<"work">;
+const lang = getLangFromUrl(Astro.url.pathname);
+const t = useTranslations(lang);
+const work = await getWorkData(lang);
 
-interface Props {
-  title: string;
-  description: string;
-  heading: string;
-  lang: Lang;
-  work: WorkEntry[];
-}
-
-const { title, description, heading, work } = Astro.props;
+const title = t("work.title");
+const description = WORK.DESCRIPTION;
 
 const renderedWork = await Promise.all(
   work.map(async (entry) => {
@@ -25,18 +21,18 @@ const renderedWork = await Promise.all(
 );
 ---
 
-<PageLayout title={title} description={description}>
+<PageLayout {title} {description}>
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        {heading}
+        {t("work.heading")}
       </div>
       <ul class="flex flex-col space-y-4">
         {
           renderedWork.map(({ entry, Content }) => (
             <li class="animate">
               <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd, Astro.props.lang)}
+                {dateRange(entry.data.dateStart, entry.data.dateEnd, lang)}
               </div>
               <div class="font-semibold text-black dark:text-white">
                 {entry.data.company}
