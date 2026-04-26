@@ -21,7 +21,7 @@ jobs:
         uses: withastro/action@v3
         with:
           package-manager: pnpm
-          pnpm-version: 10.33.0 
+          pnpm-version: 10.33.0
   deploy:
     needs: build
     runs-on: ubuntu-latest
