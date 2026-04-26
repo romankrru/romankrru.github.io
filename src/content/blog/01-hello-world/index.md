@@ -2,6 +2,7 @@
 title: "Hello world"
 description: "Мой первый пост"
 date: "Apr 24 2026"
+lang: "ru"
 ---
 
 Привет! Это мой персональный блог.

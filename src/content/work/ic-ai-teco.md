@@ -1,4 +1,5 @@
 ---
+lang: ru
 company: "ИЦ АЙ-ТЕКО"
 role: "Старший frontend-разработчик"
 dateStart: "08/01/2022"

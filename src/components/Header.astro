@@ -1,7 +1,16 @@
 ---
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
+import {
+  switchLang,
+  useTranslations,
+  getLangFromUrl,
+  localizedPath,
+} from "@i18n/utils";
 import { SITE } from "@consts";
+
+const lang = getLangFromUrl(Astro.url.pathname);
+const t = useTranslations(lang);
 ---
 
 <header>
@@ -12,21 +21,32 @@ import { SITE } from "@consts";
           {SITE.NAME}
         </div>
       </Link>
-      <nav class="flex gap-1">
-        <Link href="/blog">
-          blog
-        </Link>
+      <nav class="flex gap-1 items-center">
+        <Link href={localizedPath("/blog", lang)}> {t("header.blog")} </Link>
         <span>
           {`/`}
         </span>
-        <Link href="/work">
-          work
-        </Link>
-        <span>
-          {`/`}
+        <Link href={localizedPath("/work", lang)}> {t("header.work")} </Link>
+        {
+          SITE.PROJECTS_ENABLED && (
+            <>
+              <span>{`/`}</span>
+
+              <Link href={localizedPath("/projects", lang)}>
+                {" "}
+                {t("header.projects")}{" "}
+              </Link>
+            </>
+          )
+        }
+        <span class="text-gray-400">
+          {`| `}
         </span>
-        <Link href="/projects">
-          projects
+        <Link
+          href={switchLang(Astro.url.pathname)}
+          title={t("header.lang.switch")}
+        >
+          {lang === "ru" ? "en" : "ru"}
         </Link>
       </nav>
     </div>

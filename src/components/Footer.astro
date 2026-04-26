@@ -2,6 +2,10 @@
 import Container from "@components/Container.astro";
 import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
+import { useTranslations, getLangFromUrl } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url.pathname);
+const t = useTranslations(lang);
 ---
 
 <footer class="animate">
@@ -13,12 +17,12 @@ import BackToTop from "@components/BackToTop.astro";
     </div>
     <div class="flex justify-between items-center">
       <div>
-        &copy; 2024 {`|`} {SITE.NAME}
+        &copy; 2026 {`|`} {SITE.NAME}
       </div>
       <div class="flex flex-wrap gap-1 items-center">
         <button
+          title={t("footer.theme.light")}
           id="light-theme-button"
-          aria-label="Light theme"
           class="group size-8 flex items-center justify-center rounded-full"
         >
           <svg
@@ -45,8 +49,8 @@ import BackToTop from "@components/BackToTop.astro";
           </svg>
         </button>
         <button
+          title={t("footer.theme.dark")}
           id="dark-theme-button"
-          aria-label="Dark theme"
           class="group size-8 flex items-center justify-center rounded-full"
         >
           <svg
@@ -65,8 +69,8 @@ import BackToTop from "@components/BackToTop.astro";
           </svg>
         </button>
         <button
+          title={t("footer.theme.system")}
           id="system-theme-button"
-          aria-label="System theme"
           class="group size-8 flex items-center justify-center rounded-full"
         >
           <svg

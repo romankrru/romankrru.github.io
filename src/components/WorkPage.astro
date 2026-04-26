@@ -1,0 +1,56 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import { dateRange } from "@lib/utils";
+import { type Lang } from "@i18n/ui";
+import type { CollectionEntry } from "astro:content";
+
+type WorkEntry = CollectionEntry<"work">;
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  lang: Lang;
+  work: WorkEntry[];
+}
+
+const { title, description, heading, work } = Astro.props;
+
+const renderedWork = await Promise.all(
+  work.map(async (entry) => {
+    const { Content } = await entry.render();
+    return { entry, Content };
+  })
+);
+---
+
+<PageLayout title={title} description={description}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        {heading}
+      </div>
+      <ul class="flex flex-col space-y-4">
+        {
+          renderedWork.map(({ entry, Content }) => (
+            <li class="animate">
+              <div class="text-sm opacity-75">
+                {dateRange(entry.data.dateStart, entry.data.dateEnd, Astro.props.lang)}
+              </div>
+              <div class="font-semibold text-black dark:text-white">
+                {entry.data.company}
+              </div>
+              <div class="text-sm opacity-75">
+                {entry.data.role}
+              </div>
+              <article>
+                <Content />
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</PageLayout>

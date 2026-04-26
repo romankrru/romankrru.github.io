@@ -1,0 +1,50 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import type { BlogPostsByYear } from "@lib/blog";
+import { type Lang } from "@i18n/ui";
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  lang: Lang;
+  posts: BlogPostsByYear;
+  years: string[];
+}
+
+const { title, description, heading, lang, posts, years } = Astro.props;
+---
+
+<PageLayout title={title} description={description}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        {heading}
+      </div>
+      <div class="space-y-4">
+        {
+          years.map((year) => (
+            <section class="animate space-y-4">
+              <div class="font-semibold text-black dark:text-white">
+                {year}
+              </div>
+              <div>
+                <ul class="flex flex-col gap-4">
+                  {
+                    posts[year].map((post) => (
+                      <li>
+                        <ArrowCard entry={post} lang={lang} />
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</PageLayout>
