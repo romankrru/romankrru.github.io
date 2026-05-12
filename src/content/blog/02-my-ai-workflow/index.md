@@ -3,7 +3,7 @@ title: "Мой AI-workflow"
 description: "Мой AI-workflow"
 date: "May 12 2026"
 lang: "ru"
-draft: true
+draft: false
 ---
 
 TODO:
@@ -17,7 +17,7 @@ TODO: описать зачем это вообще, какие плюсы, дл
 
 ## Workflow
 
-Мой workflow по большей части основан на подходе [Mat Pocock](https://github.com/mattpocock) и его наборе скиллов. Я собрал из этого пайплайн: от идеи до создания PR до создания PR.
+Мой workflow по большей части основан на подходе [Mat Pocock](https://github.com/mattpocock) и его наборе скиллов. Я собрал из этого пайплайн: от идеи до создания финального PR.
 
 Разберу каждый шаг на примере небольшого пет-проекта [geo-quiz](https://github.com/romankrru/geo-quiz). Стек у меня завязан на Claude Code и GitHub, но сами приёмы не про конкретный инструмент: их можно повторить с любым ИИ-агентом для работы с кодом (например, OpenCode) и с локальными файлами вместо GitHub issues.
 
