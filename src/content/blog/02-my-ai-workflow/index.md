@@ -3,7 +3,7 @@ title: "Мой AI-workflow"
 description: "Мой AI-workflow"
 date: "May 12 2026"
 lang: "ru"
-# draft: true
+draft: true
 ---
 
 TODO:
