@@ -1,6 +1,6 @@
 ---
 title: "Мой AI-workflow"
-description: "Мой AI-workflow"
+description: "Как провести фичу от идеи до PR с помощью ИИ-агента"
 date: "May 12 2026"
 lang: "ru"
 draft: true
