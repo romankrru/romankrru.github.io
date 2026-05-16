@@ -2,10 +2,11 @@
 import PostPage from "@components/PostPage.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { useTranslations, getLangFromUrl } from "@i18n/utils";
+import { isVisible } from "@lib/drafts";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
-    .filter((post) => !post.data.draft)
+    .filter(isVisible)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return posts.map((post) => ({
     params: { slug: post.slug },

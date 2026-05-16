@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from "astro:content";
+import { isVisible } from "@lib/drafts";
 
 export type BlogPostsByYear = {
   [year: string]: CollectionEntry<"blog">[];
@@ -7,7 +8,7 @@ export type BlogPostsByYear = {
 export async function getBlogData(lang: string) {
   const data = (await getCollection("blog"))
     .filter((post) => post.data.lang === lang)
-    .filter((post) => !post.data.draft)
+    .filter(isVisible)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   const posts = data.reduce((acc: BlogPostsByYear, post) => {
