@@ -3,7 +3,7 @@ title: "Мой AI-workflow"
 description: "Как провести фичу от идеи до PR с помощью ИИ-агента"
 date: "May 17 2026"
 lang: "ru"
-draft: true
+draft: false
 ---
 
 ## Введение
