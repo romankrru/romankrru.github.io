@@ -12,6 +12,8 @@ It's convenient but fragile to implement a feature in a single chat session: fir
 
 The main thesis of this article is simple: an agent does well where decisions have already been made and written down, the context of each iteration is small, and the state of the work lives outside the agent — in an issue tracker or files, not in its memory. Below is a plan for taking a feature from idea to PR while respecting these constraints.
 
+This approach is meant for substantial features and ideas — where there's something to discuss, pin down, and break into pieces. For a simple bugfix, typo, small refactor, or one-line change, there's no point running the full cycle; the agent already knows what to do.
+
 ## Workflow
 
 My workflow is largely based on the approach of [Matt Pocock](https://github.com/mattpocock) and his set of skills: the sequence of steps from idea to final PR is already baked in, and I lean on it as is.
