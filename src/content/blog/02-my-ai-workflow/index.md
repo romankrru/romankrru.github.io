@@ -146,7 +146,7 @@ claude --allowed-tools=Bash,Read,Edit,Write,MultiEdit,Grep,Glob -p "$PROMPT_BODY
 
 Когда ralph закрывает последнего ребёнка PRD, у меня в GitHub лежит один большой epic-PR prd/<N>-<slug> → main, состоящий из аккуратной серии сквош-коммитов «один коммит на ишью».
 
-Пример итогового child-PR в epic: [PR #18 — Configured round size: Settings page and home navigation](https://github.com/romankrru/geo-quiz/pull/18).
+Пример PR в epic-ветку: [PR #18 — Configured round size: Settings page and home navigation](https://github.com/romankrru/geo-quiz/pull/18).
 
 Дальше:
 
