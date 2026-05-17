@@ -103,10 +103,9 @@ while not done:
     agent_step()
 ```
 
-(TODO: описать почему такое название)
-(TODO: найти более подходящее изображение, чтобы смотрелось норм на черном фоне)
+Название придумал [Geoffrey Huntley](https://ghuntley.com/ralph/) — это отсылка к Ralph Wiggum из «Симпсонов». Персонаж туповатый, но упорный: делает одно и то же и не унывает от неудач. Цикл ведёт себя так же — один и тот же промпт, разный код вокруг, и так пока задача не будет закрыта.
 
-![Square Pants](./ralph.png)
+![Ralph Wiggum](./ralph.png)
 
 У меня есть скрипт [`.agents/ralph/loop.sh`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/loop.sh), передает ему один и тот же [`PROMPT.md`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/PROMPT.md) и смотрит на последнюю строку вывода: `STATUS=done` | `STATUS=progress` | `STATUS=blocked`. По статусу решает: выходим или зовём агента снова.
 
