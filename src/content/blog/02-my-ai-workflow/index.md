@@ -129,7 +129,7 @@ claude --allowed-tools=Bash,Read,Edit,Write,MultiEdit,Grep,Glob -p "$PROMPT_BODY
 
 Это не обязательно должен быть GitHub. То же самое можно собрать на локальных файлах: например, директория tasks/ с markdown-файлами, у каждого статус во frontmatter, и агент сканирует папку вместо gh issue list. Главное — состояние не в памяти агента, а в чём-то, что переживает перезапуск.
 
-Внутри каждой итерации ralph использует мой скилл implement-issue.
+Внутри каждой итерации ralph использует мой скилл [`implement-issue`](https://github.com/romankrru/geo-quiz/tree/main/.agents/skills/implement-issue).
 
 Этот скилл:
 
@@ -138,9 +138,9 @@ claude --allowed-tools=Bash,Read,Edit,Write,MultiEdit,Grep,Glob -p "$PROMPT_BODY
 - Реализует ишью через TDD — это отдельный скилл [tdd](https://github.com/romankrru/geo-quiz/tree/main/.agents/skills/tdd). Используются vertical slice: один тест → минимальная имплементация → следующий тест. Acceptance criteria из тела ишью становятся списком тестов.
 - Прогоняет локально lint, prettier, build, vitest.
 - Открывает PR в epic-ветку с Closes #<n>.
-- Передаёт PR скилу babysit (TODO: описать что это), который добивает его до зелёного CI и сквош-мержит в основную PRD-ветку.
+- Передаёт PR скилу [babysit](https://github.com/openai/codex/blob/main/.codex/skills/babysit-pr/SKILL.md), который добивает его до зелёного CI и сквош-мержит в основную PRD-ветку.
 
-Все child-PR’ы складываются на epic-ветку prd/<N>-<slug>. Финального мерджа в main ralph никогда не делает — это моя зона ответственности.
+Все дочерние PR сливаются в epic-ветку prd/<N>-<slug>. Финального слияния в main ralph никогда не делает — это моя зона ответственности.
 
 ## Финальный PR в main
 
@@ -148,7 +148,7 @@ claude --allowed-tools=Bash,Read,Edit,Write,MultiEdit,Grep,Glob -p "$PROMPT_BODY
 
 Пример итогового child-PR в epic: [PR #18 — Configured round size: Settings page and home navigation](https://github.com/romankrru/geo-quiz/pull/18).
 
-Дальше — руками:
+Дальше:
 
 - Прохожу функциональность глазами и руками в браузере.
 - Читаю diff целиком: меня интересует, как фича выглядит как единое целое
@@ -159,4 +159,4 @@ claude --allowed-tools=Bash,Read,Edit,Write,MultiEdit,Grep,Glob -p "$PROMPT_BODY
 
 (TODO: написать про важность небольшого контекста)
 
-гент хорошо работает там, где решение уже принято и зафиксировано на бумаге. Если PRD сформулирован прицельно, домен зафиксирован в CONTEXT.md, ишью — это тонкий vertical slice с явными acceptance criteria — ralph справляется.
+Агент хорошо работает там, где решение уже принято и зафиксировано на бумаге. Если PRD сформулирован прицельно, домен зафиксирован в CONTEXT.md, ишью — это тонкий vertical slice с явными acceptance criteria — ralph справляется.
