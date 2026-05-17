@@ -104,9 +104,9 @@ while not done:
 
 ![Ralph Wiggum](./ralph.png)
 
-У меня есть скрипт [`.agents/ralph/loop.sh`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/loop.sh), передаёт ему один и тот же [`PROMPT.md`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/PROMPT.md) и смотрит на последнюю строку вывода: `STATUS=done` | `STATUS=progress` | `STATUS=blocked`. По статусу решает: выходим или зовём агента снова.
+У меня для этого есть скрипт [`.agents/ralph/loop.sh`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/loop.sh): он в цикле вызывает агента по одному и тому же [`PROMPT.md`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/PROMPT.md) и смотрит на последнюю строку вывода — `STATUS=done`, `STATUS=progress` или `STATUS=blocked`. По статусу решает, выходить или звать агента снова.
 
-Под капотом скрипт делает мало: принимает номер PRD-issue, переходит в корень репозитория и в цикле до `MAX_ITERS` (по умолчанию 20) запускает агента с одним и тем же `PROMPT.md`. Вывод каждой итерации пишется в `.agents/ralph/logs/<timestamp>/iter-NN.log` — оттуда же скрипт грепает последнюю строку `STATUS=…` и решает, продолжать ли цикл.
+Под капотом скрипт принимает номер PRD-issue, переходит в корень репозитория и в цикле до `MAX_ITERS` (по умолчанию 20) запускает агента с одним и тем же `PROMPT.md`. Вывод каждой итерации пишется в `.agents/ralph/logs/<timestamp>/iter-NN.log` — оттуда же скрипт грепает последнюю строку `STATUS=…` и решает, продолжать ли цикл.
 
 Сам вызов агента — одна строка:
 
