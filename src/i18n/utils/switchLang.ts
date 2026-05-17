@@ -1,6 +1,14 @@
 import { defaultLang, type Lang } from "@i18n/ui";
 import { getLangFromUrl } from "./getLangFromUrl";
 
+/**
+ * Normalizes a pathname by removing trailing slashes and ensuring it starts with a slash.
+ */
+function normalizePathname(pathname: string): string {
+  if (pathname === "/" || pathname === "") return "/";
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
 function stripLangPrefix(pathname: string, lang: Lang): string {
   if (lang === defaultLang) return pathname;
   return pathname.replace(`/${lang}`, "") || "/";
@@ -31,10 +39,11 @@ function transformBlogPath(path: string, fromLang: Lang, toLang: Lang): string {
 }
 
 export function switchLang(pathname: string): string {
-  const currentLang = getLangFromUrl(pathname);
+  const normalized = normalizePathname(pathname);
+  const currentLang = getLangFromUrl(normalized);
   const targetLang: Lang = currentLang === "ru" ? "en" : "ru";
 
-  const stripped = stripLangPrefix(pathname, currentLang);
+  const stripped = stripLangPrefix(normalized, currentLang);
   const transformed = transformBlogPath(stripped, currentLang, targetLang);
   return addLangPrefix(transformed, targetLang);
 }
