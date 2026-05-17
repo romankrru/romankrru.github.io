@@ -108,10 +108,12 @@ while not done:
 
 Под капотом скрипт принимает номер PRD-issue, переходит в корень репозитория и в цикле до `MAX_ITERS` (по умолчанию 20) запускает агента с одним и тем же `PROMPT.md`. Вывод каждой итерации пишется в `.agents/ralph/logs/<timestamp>/iter-NN.log` — оттуда же скрипт грепает последнюю строку `STATUS=…` и решает, продолжать ли цикл.
 
-Сам вызов агента — одна строка:
+Сам вызов агента:
 
 ```sh
-claude --allowed-tools=Bash,Read,Edit,Write,MultiEdit,Grep,Glob -p "$PROMPT_BODY"
+claude \
+  --allowed-tools=Bash,Read,Edit,Write,MultiEdit,Grep,Glob \
+  -p "$PROMPT_BODY"
 ```
 
 Флаг `-p` (он же `--print`) переводит Claude Code в headless-режим: агент печатает ответ в stdout и завершается, без интерактивного TUI. Без него вызов из скрипта не имел бы смысла — TUI заблокировал бы пайплайн.
