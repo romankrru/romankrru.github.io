@@ -1,5 +1,5 @@
 ---
-title: "My AI workflow"
+title: "Autonomous AI workflow"
 description: "How to take a feature from idea to PR with an AI agent"
 date: "May 17 2026"
 lang: "en"
@@ -24,7 +24,7 @@ Before going through each step — an important caveat. I rarely work this way e
 
 ## Example feature
 
-The app needs a settings screen (`/settings`): the player sets the number of questions per round — presets (10, 25, all countries in the catalog) or a custom number; the choice is saved in `localStorage` and applied when the next round starts.
+In a small [flag quiz game](https://geo-quiz-phi.vercel.app/), we need to add a settings screen (`/settings`): the player sets the number of questions per round — presets (10, 25, all countries in the catalog) or a custom number; the choice is saved in `localStorage` and applied when the next round starts.
 
 ![Settings screen](./settings-screen.png)
 
@@ -61,6 +61,8 @@ In large repositories a single glossary file can stop coping: the same term in d
 In a small project all of this is overkill — a single `CONTEXT.md` at the root is enough. In a large product `CONTEXT-MAP.md` is justified: it tells the agent (and the human) which glossary to go to for a term, and prevents mixing languages from different contexts.
 
 Besides `CONTEXT.md`, `/grill-with-docs` sometimes suggests creating an ADR — a separate markdown file in `docs/adr/`. An ADR is created if three conditions are met: the decision is hard to roll back, it looks strange without context, and it involves some kind of trade-off. Such documents are deliberately few.
+
+In my experience, AI can fill `CONTEXT.md` with plausible-looking slop. So this stage puts a lot of responsibility on the developer. And code review won't easily catch it: the reviewer needs domain knowledge and immersion to spot the problem.
 
 ## Creating a PRD
 
