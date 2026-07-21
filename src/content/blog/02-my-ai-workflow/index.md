@@ -35,7 +35,7 @@ draft: false
 - [`/grill-me`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) — агент опрашивает по плану, проходя по веткам дерева решений, пока каждая не разрешится.
 - [`/grill-with-docs`](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md) — то же интервью, но дополнительно агент сверяет план с существующей доменной моделью, уточняет терминологию и по ходу обновляет `CONTEXT.md` и ADR (_Architectural Decision Record_, запись об архитектурном решении).
 
-Если речь про проект с кодовой базой — почти всегда стоит брать `/grill-with-docs`. Исторически первым был `/grill-me` — скилл, который сам по себе стал вирусным. Но в процессе работы Matt заметил, что ему регулярно не хватало общего языка с агентом (в [DDD](https://en.wikipedia.org/wiki/Domain-driven_design) это _ubiquitous language_, UL): на грилл-сессиях всплывали хорошие термины, но они нигде не фиксировались, и в следующий раз их приходилось проговаривать заново. Сначала он запускал параллельно второй скилл `/ubiquitous-language`, который вытаскивал термины в отдельный глоссарий, а потом объединил оба в один — так появился `/grill-with-docs`.
+Если речь про проект с кодовой базой — почти всегда стоит брать `/grill-with-docs`. Исторически первым был `/grill-me` — скилл, который сам по себе стал вирусным. Но в процессе работы Matt заметил, что ему регулярно не хватало общего языка с агентом (в [DDD](https://en.wikipedia.org/wiki/Domain-driven_design) это _ubiquitous language_, UL): на грилл-сессиях всплывали повторяющиеся термины, но они нигде не фиксировались, и в следующий раз их приходилось проговаривать заново. Сначала он запускал параллельно второй скилл `/ubiquitous-language`, который вытаскивал термины в отдельный глоссарий, а потом объединил оба в один — так появился `/grill-with-docs`.
 
 В geo-quiz я запускаю именно его. Копия скилла лежит в репозитории — [`/grill-with-docs`](https://github.com/romankrru/geo-quiz/tree/main/.agents/skills/grill-with-docs). Дальше всё стандартно: описываю агенту идею, вызываю скилл, и он начинает выяснять детали и фиксировать каждое значимое решение. Параллельно агент правит [`CONTEXT.md`](https://github.com/romankrru/geo-quiz/blob/main/CONTEXT.md) в корне репозитория.
 
@@ -108,7 +108,7 @@ while not done:
 
 ![Ralph Wiggum](./ralph.png)
 
-У меня для этого есть скрипт [`.agents/ralph/loop.sh`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/loop.sh): он в цикле вызывает агента по одному и тому же [`PROMPT.md`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/PROMPT.md) и смотрит на последнюю строку вывода — `STATUS=done`, `STATUS=progress` или `STATUS=blocked`. По статусу решает, выходить или звать агента снова.
+У меня для этого есть скрипт [`.agents/ralph/loop.sh`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/loop.sh): он в цикле вызывает агента по одному и тому же [`PROMPT.md`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/PROMPT.md) и смотрит на последнюю строку вывода — `STATUS=done`, `STATUS=progress` или `STATUS=blocked`. По статусу решает, выходить или звать агента снова. В самом `PROMPT.md` описано что делать за один проход.
 
 Под капотом скрипт принимает номер PRD-issue, переходит в корень репозитория и в цикле до `MAX_ITERS` (по умолчанию 20) запускает агента с одним и тем же `PROMPT.md`. Вывод каждой итерации пишется в `.agents/ralph/logs/<timestamp>/iter-NN.log` — оттуда же скрипт грепает последнюю строку `STATUS=…` и решает, продолжать ли цикл.
 
