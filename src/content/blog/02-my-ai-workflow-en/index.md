@@ -82,7 +82,7 @@ The [`/to-issues`](https://github.com/romankrru/geo-quiz/tree/main/.agents/skill
 
 - Is self-contained — you can take it, implement it, and merge it.
 - Is a _vertical slice_ (_tracer bullet_) — a small, complete piece of functionality: for example, saving a setting, including the UI, logic, and tests. You can try it out right away. With a _horizontal slice_, a task covers one technical layer — for example, the entire backend for a feature. You can only test the user flow once the remaining layers are implemented, so vertical slices are a better fit for agent tasks.
-- Is marked as AFK (can be handed to an agent) or HITL (requires a human — for example, a design decision or an architectural choice).
+- Is marked as AFK (can be handed to an agent) or <abbr title="Human-in-the-loop">HITL</abbr> (requires a human — for example, a design decision or an architectural choice).
 
 The agent shows the proposed split, gets feedback, iterates, and then publishes child issues on GitHub with the `ready-for-agent` label — by this label the ralph loop later picks them up (see below).
 
@@ -106,7 +106,7 @@ while not done:
     agent_step()
 ```
 
-The name was coined by [Geoffrey Huntley](https://ghuntley.com/ralph/) — it's a reference to Ralph Wiggum from The Simpsons. The character is dim but persistent: does the same thing over and over and isn't discouraged by failure. The loop behaves the same way — the same prompt, different code around it, and so on until the task is closed.
+The name was coined by [Geoffrey Huntley](https://ghuntley.com/ralph/) — it's a reference to Ralph Wiggum from The Simpsons. The character is a little dim, but he keeps trying and doesn't get discouraged by failure. The loop behaves the same way — the same prompt, different code around it, and so on until the task is closed.
 
 ![Ralph Wiggum](./ralph.png)
 
