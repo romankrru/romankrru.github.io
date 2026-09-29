@@ -62,9 +62,9 @@ The same term can mean different things in different parts of a project. In DDD,
 
 If terms have the same meaning throughout the project, a single `CONTEXT.md` at the root is enough. When individual contexts need their own glossaries, `CONTEXT-MAP.md` helps the agent and the developer find the right one.
 
-Besides `CONTEXT.md`, `/grill-with-docs` sometimes suggests creating an ADR — a separate markdown file in `docs/adr/` explaining an architectural decision. It's for decisions that are hard to reverse, whose reasons will become unclear over time, and that involved trade-offs.
+Besides `CONTEXT.md`, `/grill-with-docs` sometimes suggests creating an ADR — a separate markdown file in `docs/adr/` explaining an architectural decision. An ADR records why a decision was made and what trade-offs were accepted. This is especially useful when a decision is hard to reverse and looks strange without context.
 
-In my experience, AI can fill `CONTEXT.md` with plausible-looking slop. So this stage puts a lot of responsibility on the developer. And code review won't easily catch it: the reviewer needs domain knowledge and immersion to spot the problem.
+In my experience, AI can fill `CONTEXT.md` with plausible-looking slop. So this stage puts a lot of responsibility on the developer. This slop isn't always easy to spot during code review, especially if the reviewer isn't familiar with the domain.
 
 ## Creating a PRD
 
@@ -110,7 +110,7 @@ The name was coined by [Geoffrey Huntley](https://ghuntley.com/ralph/) — it's 
 
 ![Ralph Wiggum](./ralph.png)
 
-For this I have a script [`.agents/ralph/loop.sh`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/loop.sh): it calls the agent in a loop with the same [`PROMPT.md`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/PROMPT.md) and looks at the last line of output — `STATUS=done`, `STATUS=progress`, or `STATUS=blocked`. Based on the status it decides whether to exit or call the agent again.
+For this I have a script [`.agents/ralph/loop.sh`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/loop.sh): it calls the agent in a loop with the same [`PROMPT.md`](https://github.com/romankrru/geo-quiz/blob/main/.agents/ralph/PROMPT.md) and looks at the last line of output — `STATUS=done`, `STATUS=progress`, or `STATUS=blocked`. Based on the status it decides whether to exit or call the agent again. `PROMPT.md` itself describes what to do in a single pass.
 
 Under the hood the script takes a PRD issue number, changes to the repo root, and in a loop up to `MAX_ITERS` (20 by default) runs the agent with the same `PROMPT.md`. The output of each iteration is written to `.agents/ralph/logs/<timestamp>/iter-NN.log` — from there the script greps the last `STATUS=…` line and decides whether to continue.
 
@@ -172,10 +172,10 @@ Next:
 
 The full path from idea to a merge into `main`:
 
-1. **`/grill-with-docs`** — the agent interviews along a plan, captures language and debatable decisions in `CONTEXT.md` and ADRs.
+1. **`/grill-with-docs`** — the agent clarifies the feature requirements and records term definitions in `CONTEXT.md`. When needed, it documents architectural decisions in ADRs.
 2. **`/to-prd`** — collects the chat context into a PRD and publishes it as a GitHub issue with the `prd` label.
 3. **`/to-issues`** — slices the PRD into child vertical-slice issues and applies routing labels (`prd-<N>`, `ready-for-agent`).
 4. **ralph loop** — takes a `ready-for-agent` issue, via `implement-issue` drives it to a PR into the epic branch; `babysit` finishes the CI and squash-merges.
 5. **Final merge** — I go through the epic PR by hand in the browser, read the diff as a whole, make targeted edits, and merge into `main`.
 
-By the time ralph picks up a task, there's almost nothing left for it to "figure out." This doesn't guarantee a good result — it can be bad and not what was intended. But the less room the agent has for uncertainty, the fewer mistakes it makes. Of everything I've tried, this approach works best.
+By the time ralph picks up a task, the main requirements have already been defined and written down. It's easier for the agent to understand what needs to be done, although the result still needs to be checked and corrected. Of everything I've tried, this approach works best.
