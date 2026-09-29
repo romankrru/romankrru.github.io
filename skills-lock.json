@@ -7,6 +7,24 @@
       "sourceType": "github",
       "skillPath": "skills/productivity/grill-me/SKILL.md",
       "computedHash": "784f0dbb7403b0f00324bce9a112f715342777a0daee7bbb7385f9c6f0a170ea"
+    },
+    "ru-check": {
+      "source": "talkstream/ru-text",
+      "sourceType": "github",
+      "skillPath": "skills/ru-check/SKILL.md",
+      "computedHash": "da546b9b32c54c7c68af744d42592e58f408d0b3ff5b6987ccafed30a66fa4c2"
+    },
+    "ru-score": {
+      "source": "talkstream/ru-text",
+      "sourceType": "github",
+      "skillPath": "skills/ru-score/SKILL.md",
+      "computedHash": "34c1fed2ff942c25fa2fc5c5b21cce12f78dfd8402270649eea6cab2a5d9a891"
+    },
+    "ru-text": {
+      "source": "talkstream/ru-text",
+      "sourceType": "github",
+      "skillPath": "skills/ru-text/SKILL.md",
+      "computedHash": "74c44c70e0ee38c863733c5cd1755ef5ac12af048499ee4ded4becf8147fb5ca"
     }
   }
 }
