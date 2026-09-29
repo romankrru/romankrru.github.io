@@ -18,6 +18,8 @@ This approach is for large features that need to be discussed and broken down in
 
 My workflow is largely based on the approach of [Matt Pocock](https://github.com/mattpocock) and his set of skills: the sequence of steps from idea to final PR is already baked in, and I lean on it as is.
 
+To install the skills, follow [Matt's instructions](https://github.com/mattpocock/skills#installation-30-second-setup).
+
 I'll walk through each step using a small side project, [geo-quiz](https://github.com/romankrru/geo-quiz), as an example. I use Claude Code and GitHub. You can follow the same steps with another AI agent, such as OpenCode, and keep tasks in local files instead of GitHub issues.
 
 I don't always use the full workflow. I often run individual skills manually — that gives me more control over what the agent does. If something breaks, it's easier to debug a specific step.
@@ -37,13 +39,13 @@ At this stage Matt Pocock has two related skills:
 
 When I start working on a new feature, I use `/grill-with-docs`. Historically `/grill-me` came first — a skill that became viral on its own. But over time Matt noticed that he regularly lacked a shared language with the agent (in [DDD](https://en.wikipedia.org/wiki/Domain-driven_design) this is _ubiquitous language_, UL): grilling sessions surfaced recurring terms, but they weren't recorded anywhere, and next time he had to articulate them again. First he ran a second skill `/ubiquitous-language` in parallel, which extracted terms into a separate glossary, and then he merged the two into one — that's how `/grill-with-docs` was born.
 
-The geo-quiz repository contains [a copy of `/grill-with-docs`](https://github.com/romankrru/geo-quiz/tree/main/.agents/skills/grill-with-docs). I describe my idea to the agent and invoke the skill. The agent then asks for details and records each important decision. It also updates [`CONTEXT.md`](https://github.com/romankrru/geo-quiz/blob/main/CONTEXT.md) at the repository root.
+In geo-quiz, I describe my idea to the agent and invoke `/grill-with-docs`. The agent then asks for details and records each important decision. It also updates [`CONTEXT.md`](https://github.com/romankrru/geo-quiz/blob/main/CONTEXT.md) at the repository root.
 
-`CONTEXT.md` is the project glossary: it holds the definitions of key terms. The idea is borrowed from DDD: one of its central concepts is _ubiquitous language_, a single language spoken by three sides — the code, the developers, and the domain experts. When all three call the same things by the same names, a whole class of errors disappears: in conversation the entity is called one thing, in the ticket — another, in the code — a third.
+`CONTEXT.md` is the project glossary, with definitions of key terms. DDD has a concept called _ubiquitous language_ — a shared language for developers and domain experts. The same terms are used in the code. The glossary helps everyone agree on what each concept means and use those definitions consistently in their work.
 
-For an agent the effect is exactly the same as for a new person on the team: instead of figuring out every time what, for example, a "round" or a "preset" is, it checks `CONTEXT.md` and immediately uses the established term. Names in the code and in the PR match the glossary, and the agent's responses become shorter.
+The agent can check `CONTEXT.md` to find out what a "round" or a "preset" means in the project. These definitions help it use the established terminology when writing code and PR descriptions.
 
-In large repositories a single glossary file can stop coping: the same term in different parts of the system may denote different entities with different rules. For this case DDD has _bounded context_ — an explicit boundary inside which the language is consistent. Matt uses `CONTEXT-MAP.md` at the root for such repos: it contains no definitions itself, only a map showing which contexts exist in the project and where each has its own `CONTEXT.md`.
+The same term can mean different things in different parts of a project. In DDD, the area where a particular model and its language apply is called a _bounded context_. For projects like this, Matt uses separate `CONTEXT.md` files. A `CONTEXT-MAP.md` file at the root shows which contexts exist in the project and where to find their glossaries.
 
 ```
 /
@@ -58,9 +60,9 @@ In large repositories a single glossary file can stop coping: the same term in d
         └── docs/adr/
 ```
 
-In a small project all of this is overkill — a single `CONTEXT.md` at the root is enough. In a large product `CONTEXT-MAP.md` is justified: it tells the agent (and the human) which glossary to go to for a term, and prevents mixing languages from different contexts.
+If terms have the same meaning throughout the project, a single `CONTEXT.md` at the root is enough. When individual contexts need their own glossaries, `CONTEXT-MAP.md` helps the agent and the developer find the right one.
 
-Besides `CONTEXT.md`, `/grill-with-docs` sometimes suggests creating an ADR — a separate markdown file in `docs/adr/`. An ADR is created if three conditions are met: the decision is hard to roll back, it looks strange without context, and it involves some kind of trade-off. Such documents are deliberately few.
+Besides `CONTEXT.md`, `/grill-with-docs` sometimes suggests creating an ADR — a separate markdown file in `docs/adr/` explaining an architectural decision. It's for decisions that are hard to reverse, whose reasons will become unclear over time, and that involved trade-offs.
 
 In my experience, AI can fill `CONTEXT.md` with plausible-looking slop. So this stage puts a lot of responsibility on the developer. And code review won't easily catch it: the reviewer needs domain knowledge and immersion to spot the problem.
 
