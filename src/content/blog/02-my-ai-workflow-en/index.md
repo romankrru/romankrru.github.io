@@ -81,7 +81,7 @@ The document itself isn't stored in the repository — it only lives as a GitHub
 The [`/to-issues`](https://github.com/romankrru/geo-quiz/tree/main/.agents/skills/to-issues) skill splits a large PRD into small tasks. Each of these tasks:
 
 - Is self-contained — you can take it, implement it, and merge it.
-- Is a _vertical slice_ (_tracer bullet_) — a thin cut through all layers (model, service, UI, tests), not "the whole backend first, then the whole frontend."
+- Is a _vertical slice_ (_tracer bullet_) — a small, complete piece of functionality: for example, saving a setting, including the UI, logic, and tests. You can try it out right away. With a _horizontal slice_, a task covers one technical layer — for example, the entire backend for a feature. You can only test the user flow once the remaining layers are implemented, so vertical slices are a better fit for agent tasks.
 - Is marked as AFK (can be handed to an agent) or HITL (requires a human — for example, a design decision or an architectural choice).
 
 The agent shows the proposed split, gets feedback, iterates, and then publishes child issues on GitHub with the `ready-for-agent` label — by this label the ralph loop later picks them up (see below).
