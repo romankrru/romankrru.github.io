@@ -8,19 +8,19 @@ draft: false
 
 ## Introduction
 
-It's convenient but fragile to implement a feature in a single chat session: first you discuss, then you write code, then you fix CI in the same window. The context inflates quickly, and on a very long window (100k tokens and above) the model remembers earlier agreements worse and makes more mistakes.
+When you work on a large feature in a single chat session, the context grows quickly. In my experience, somewhere past 100k tokens, most models get worse at remembering earlier agreements and make more mistakes. This is called _context rot_.
 
-The main thesis of this article is simple: an agent does well where decisions have already been made and written down, the context of each iteration is small, and the state of the work lives outside the agent — in an issue tracker or files, not in its memory. Below is a plan for taking a feature from idea to PR while respecting these constraints.
+An agent does better when the context for each iteration is small, decisions have already been made and written down, and the state of the work lives outside the agent — in an issue tracker or local files. Below is my outline for taking a feature from idea to pull request.
 
-This approach is meant for substantial features and ideas — where there's something to discuss, pin down, and break into pieces. For a simple bugfix, typo, small refactor, or one-line change, there's no point running the full cycle; the agent already knows what to do.
+This approach is for large features that need to be discussed and broken down into tasks first. For a simple bugfix, typo, or small refactor, there's no point running the full cycle — you can usually just give the agent the task.
 
 ## Workflow
 
 My workflow is largely based on the approach of [Matt Pocock](https://github.com/mattpocock) and his set of skills: the sequence of steps from idea to final PR is already baked in, and I lean on it as is.
 
-I'll walk through each step using a small pet project [geo-quiz](https://github.com/romankrru/geo-quiz) as an example. My stack is tied to Claude Code and GitHub, but the techniques themselves aren't about a specific tool: they can be reproduced with any AI coding agent (for example, OpenCode) and with local files instead of GitHub issues.
+I'll walk through each step using a small side project, [geo-quiz](https://github.com/romankrru/geo-quiz), as an example. I use Claude Code and GitHub. You can follow the same steps with another AI agent, such as OpenCode, and keep tasks in local files instead of GitHub issues.
 
-Before going through each step — an important caveat. I rarely work this way end-to-end. More often I take individual skills and run them manually: more control, easier to debug, you can see how everything works inside, and it's easier to adapt to yourself. If a piece is inconvenient — it's not scary to replace or drop it. Below is the maximal version; each part of it works on its own too.
+I don't always use the full workflow. I often run individual skills manually — that gives me more control over what the agent does. If something breaks, it's easier to debug a specific step.
 
 ## Example feature
 
@@ -32,12 +32,12 @@ In a small [flag quiz game](https://geo-quiz-phi.vercel.app/), we need to add a 
 
 At this stage Matt Pocock has two related skills:
 
-- [`/grill-me`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) — the agent interviews you along a plan, walking through branches of a decision tree until each one resolves.
-- [`/grill-with-docs`](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md) — the same interview, but additionally the agent reconciles the plan with the existing domain model, clarifies terminology, and updates `CONTEXT.md` and ADRs (_Architectural Decision Record_) along the way.
+- [`/grill-me`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) — the agent asks detailed questions about the feature and helps clarify the requirements.
+- [`/grill-with-docs`](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md) — the same interview, but with the project's existing domain model in mind. Along the way, the agent clarifies terms and records them in `CONTEXT.md`. When needed, it documents architectural decisions in ADRs (_Architectural Decision Records_).
 
-If we're talking about a project with a codebase — you should almost always take `/grill-with-docs`. Historically `/grill-me` came first — a skill that became viral on its own. But over time Matt noticed that he regularly lacked a shared language with the agent (in [DDD](https://en.wikipedia.org/wiki/Domain-driven_design) this is _ubiquitous language_, UL): grilling sessions surfaced recurring terms, but they weren't recorded anywhere, and next time he had to articulate them again. First he ran a second skill `/ubiquitous-language` in parallel, which extracted terms into a separate glossary, and then he merged the two into one — that's how `/grill-with-docs` was born.
+When I start working on a new feature, I use `/grill-with-docs`. Historically `/grill-me` came first — a skill that became viral on its own. But over time Matt noticed that he regularly lacked a shared language with the agent (in [DDD](https://en.wikipedia.org/wiki/Domain-driven_design) this is _ubiquitous language_, UL): grilling sessions surfaced recurring terms, but they weren't recorded anywhere, and next time he had to articulate them again. First he ran a second skill `/ubiquitous-language` in parallel, which extracted terms into a separate glossary, and then he merged the two into one — that's how `/grill-with-docs` was born.
 
-In geo-quiz I run exactly that one. A copy of the skill lives in the repository — [`/grill-with-docs`](https://github.com/romankrru/geo-quiz/tree/main/.agents/skills/grill-with-docs). After that everything is standard: I describe the idea to the agent, invoke the skill, and it starts to clarify details and capture every meaningful decision. In parallel, the agent edits [`CONTEXT.md`](https://github.com/romankrru/geo-quiz/blob/main/CONTEXT.md) at the repository root.
+The geo-quiz repository contains [a copy of `/grill-with-docs`](https://github.com/romankrru/geo-quiz/tree/main/.agents/skills/grill-with-docs). I describe my idea to the agent and invoke the skill. The agent then asks for details and records each important decision. It also updates [`CONTEXT.md`](https://github.com/romankrru/geo-quiz/blob/main/CONTEXT.md) at the repository root.
 
 `CONTEXT.md` is the project glossary: it holds the definitions of key terms. The idea is borrowed from DDD: one of its central concepts is _ubiquitous language_, a single language spoken by three sides — the code, the developers, and the domain experts. When all three call the same things by the same names, a whole class of errors disappears: in conversation the entity is called one thing, in the ticket — another, in the code — a third.
 
