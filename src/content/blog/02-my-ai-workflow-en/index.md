@@ -151,7 +151,7 @@ This skill:
 - Implements the issue via TDD — this is a separate skill [`tdd`](https://github.com/romankrru/geo-quiz/tree/main/.agents/skills/tdd). A _vertical slice_ is used: one test → minimal implementation → next test. _Acceptance criteria_ from the issue body become the list of tests.
 - Runs lint, prettier, build, vitest locally.
 - Opens a PR into the epic branch with `Closes #<n>`.
-- Hands the PR to the [`babysit`](https://github.com/openai/codex/blob/main/.codex/skills/babysit-pr/SKILL.md) skill, which drives it to a green CI and squash-merges into the main PRD branch.
+- Hands the PR to the [`loop-on-ci`](https://github.com/romankrru/geo-quiz/tree/main/.agents/skills/loop-on-ci) skill, which watches PR checks via `gh pr checks`, fixes CI failures, and squash-merges into the epic branch.
 
 All child PRs are merged into the epic branch `prd/<N>-<slug>`. ralph never does the final merge into `main` — that's my responsibility.
 
@@ -175,7 +175,7 @@ The full path from idea to a merge into `main`:
 1. **`/grill-with-docs`** — the agent clarifies the feature requirements and records term definitions in `CONTEXT.md`. When needed, it documents architectural decisions in ADRs.
 2. **`/to-prd`** — collects the chat context into a PRD and publishes it as a GitHub issue with the `prd` label.
 3. **`/to-issues`** — slices the PRD into child vertical-slice issues and applies routing labels (`prd-<N>`, `ready-for-agent`).
-4. **ralph loop** — takes a `ready-for-agent` issue, via `implement-issue` drives it to a PR into the epic branch; `babysit` finishes the CI and squash-merges.
+4. **ralph loop** — takes a `ready-for-agent` issue, via `implement-issue` drives it to a PR into the epic branch; `loop-on-ci` fixes CI and squash-merges.
 5. **Final merge** — I go through the epic PR by hand in the browser, read the diff as a whole, make targeted edits, and merge into `main`.
 
 By the time ralph picks up a task, the main requirements have already been defined and written down. It's easier for the agent to understand what needs to be done, although the result still needs to be checked and corrected. Of everything I've tried, this approach works best.
